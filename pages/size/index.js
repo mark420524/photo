@@ -47,12 +47,7 @@ Page({
             maxHeight: 87
         },
         currentFormOptions:{
-            defaultWidth: 295,
-            defaultHeight: 413,
-            currentWidth: "",
-            currentHeight: "",
-            formWidth: 0,
-            formHeight: 0,
+            
         },
         imageBoxStyleOptions: {
             imageWrap: {
@@ -64,15 +59,14 @@ Page({
                 height: ""
             }
         },
-        animationData:''
 
     },
     onLoad(){
-        watch.setWatcher(this);
+       
         this.initData();
-        this.initStyle();
-        this.initWidth();
         
+        this.initWidth();
+        this.initStyle();
     },
     onReady(){
         
@@ -80,22 +74,14 @@ Page({
     initWidth(){
         this.setData({
             currentWidth:this.width(),
-            currentHeight:this.height()
+            currentHeight:this.height(),
+            currentFormOptions:this.data.pxFormOptions
         })
     },
     onShow(){
         
     },
-    watch: {    
-        currentWidth: function(t) {
-            /*
-            var i = Number(t);
-            i >= this.sizeControl().max.width ? this.formWidth = this.currentWidth = this.formWidth = this.sizeControl.max.width : i >= this.sizeControl().min.width && (this.formWidth = this.currentWidth = Number(i));
-            */
-           console.log('currentWidth',t)
-           this.initStyle();
-        },
-    },
+    
     sizeControl: function() {
         return {
             min: {
@@ -117,11 +103,7 @@ Page({
             i[1], i[2], t.data.mmSize = i[3].width / 100, t.data.viewPort = i[4], t.data.imageBoxStyleOptions.imageWrap.maxWidth = e.width / 3 * 2, 
             t.data.imageBoxStyleOptions.imageWrap.minHeight = t.data.imageBoxStyleOptions.imageWrap.minWidth = 100, 
             t.data.imageBoxStyleOptions.imageWrap.maxHeight = e.height / 3 * 2;
-            t.setData({
-                mmSize: i[3].width / 100
-            })
-            console.log('t.data.mmSize',t.data.mmSize)
-            
+                
         });
     },
     initStyle(){
@@ -159,8 +141,8 @@ Page({
         var n = wx.getSystemInfoSync();
         return t > 580 / 750 * n.windowWidth && (t = 580 / 750 * n.windowWidth), i > 580 / 750 * n.windowWidth && (i = 580 / 750 * n.windowWidth), 
         {
-            width: t,
-            height: i
+            width: t||0,
+            height: i||0
         };
     },
     unit() {
@@ -171,6 +153,7 @@ Page({
         this.setData({
             imageSize:e.detail
         })
+        this.initStyle()
     },
     heightControlStyles () {
         let wrapper = this.wrapOptions();
@@ -181,7 +164,7 @@ Page({
         return 'width:'+( wrapper.width + 10 ) + 'px;';
     },
     imageStyles () {
-        var t = this.data.imageSize.width / this.data.imageSize.height;
+        var t = (this.data.imageSize.width / this.data.imageSize.height) || 0;
         console.log(t)
         let wrapOption = this.wrapOptions();
         console.log(this.ratio() < 25 / 35,wrapOption)
@@ -194,4 +177,22 @@ Page({
         return 'width: '+wrapOption.width + 'px;'+ 'height: '+wrapOption.height + 'px;';
         
     },
+    clickUnit(e){
+        console.log(e.detail)
+        let current =  this.data.currentFormOptions;
+        let index = e.detail.index;
+        if (index==0) {
+            current = this.data.pxFormOptions
+        }else{
+            current = this.data.mmFormOptions;
+        }
+        console.log(current)
+        this.setData({
+            selectedUnit: e.detail.index,
+            currentFormOptions:current,
+            width:this.width(),
+            height:this.height()
+        })
+        this.initStyle()
+    }
 })

@@ -2,6 +2,7 @@
     height: 100vh;
     display: flex;
     flex-flow: column;
+    font-size: 28rpx;
 }
 
 .custom-size-photo .mmBlock {
@@ -184,4 +185,15 @@
 }
 .initHeight{
     width:172px;
+}
+.custom-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2rpx solid #1989fa;
+    border-radius: 6rpx;
+    width: 260rpx;
+    height: 80rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
 }

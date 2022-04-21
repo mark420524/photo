@@ -16,23 +16,23 @@
                     </view>
                 </view>
             </view>
-            <view class="_section form">
-                <van-tabs bindchange="_pe" class="_van-tabs" color="#1989fa" data-cid="{{_c||c}}" data-hid="{{18}}" value="{{h[18].value}}">
-                    <van-tab class="_van-tab" title="{{h[ 19+'-'+(unit_i2!==undefined?unit_i2:index) ].title}}" wx:for="{{h[19].li}}" wx:for-item="unit" wx:key="index"></van-tab>
+            <view class="form">
+                <van-tabs bindchange="clickUnit" active="{{selectedUnit}}" color="#1989fa" >
+                    <van-tab title="{{unit.label}}" name=""   wx:for="{{units}}" wx:for-item="unit" wx:key="index"></van-tab>
                 </van-tabs>
                 <view class="form-item-wrap">
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input" data-cid="{{_c||c}}" data-hid="{{24}}" max="200" min="10" placeholder="{{h[24].placeholder}}" type="number" value="{{h[24].value}}"></input>
-                            <label class="_span">{{h[27].t}}</label>
+                            <input bindinput="_pe" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number" value="{{h[24].value}}"></input>
+                            <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">宽度</label>
                     </view>
                     <view class="symbol">X</view>
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input" data-cid="{{_c||c}}" data-hid="{{37}}" max="200" min="10" placeholder="{{h[37].placeholder}}" type="number" value="{{h[37].value}}"></input>
-                            <label class="_span">{{h[40].t}}</label>
+                            <input bindinput="_pe" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" value="{{h[37].value}}"></input>
+                            <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">高度</label>
                     </view>
