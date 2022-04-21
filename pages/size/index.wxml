@@ -22,7 +22,9 @@
                 <view class="form-item-wrap">
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number"></input>
+                            <input bindinput="inputWidth" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number"
+                            
+                            ></input>
                             <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">宽度</label>
@@ -30,13 +32,15 @@
                     <view class="symbol">X</view>
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" ></input>
+                            <input bindinput="inputHeight" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" 
+                            
+                            ></input>
                             <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">高度</label>
                     </view>
                 </view>
-                <van-button class="_van-button"   disabled="{{disabled}}" size="large" type="primary">下一步
+                <van-button disabled="{{disabled}}" size="large" type="primary">下一步
                 </van-button>
             </view>
         </view>

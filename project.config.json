@@ -10,7 +10,7 @@
     },
     "setting": {
         "urlCheck": false,
-        "es6": false,
+        "es6": true,
         "enhance": true,
         "postcss": true,
         "preloadBackgroundData": false,

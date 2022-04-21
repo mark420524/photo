@@ -78,7 +78,6 @@ Page({
     onShow(){
         
     },
-    
     sizeControl: function() {
         return {
             min: {
@@ -157,7 +156,7 @@ Page({
     imageStyles () {
         var t = (this.data.imageSize.width / this.data.imageSize.height) || 0;
         let wrapOption = this.wrapOptions();
-        return this.ratio() < 25 / 35 ?  'flex: 0 0 ' + (1.7 *  wrapOptions.width) + 'px;'
+        return this.ratio() < 25 / 35 ?  'flex: 0 0 ' + (1.7 *  wrapOption.width) + 'px;'
           : 'flex: 0 0 ' + (wrapOption.height * t) + 'px;'+'width: '+(wrapOption.height * t) + 'px;'
         ;
     },
@@ -169,14 +168,16 @@ Page({
     clickUnit(e){
         
         let current =  this.data.currentFormOptions;
-        let currentWidth = current.formWidth;
-        let currentHeight = current.formHeight;
+        console.log(current)
+        
         let index = e.detail.index;
         if (index==0) {
             current = this.data.pxFormOptions
         }else{
             current = this.data.mmFormOptions;
         }
+        let currentWidth = current.formWidth;
+        let currentHeight = current.formHeight;
         let unit = this.data.units[index].value;
         currentWidth = currentWidth || current.defaultWidth;
         currentHeight = currentHeight || current.defaultHeight;
@@ -186,6 +187,27 @@ Page({
             currentFormOptions:current,
             currentWidth:currentWidth+unit,
             currentHeight:currentHeight + unit
+        })
+        this.initStyle()
+    },
+    inputWidth(e){
+
+    },
+    inputHeight(e){
+        let value = e.detail.value;
+        let height = parseFloat(value) || 0;
+        console.log(height)
+        let unit = this.data.units[this.data.selectedUnit].value;
+        let current =  this.data.currentFormOptions;
+        let minHeight = current.minHeight;
+        let maxHeight = current.maxHeight;
+        if (height<minHeight || height>maxHeight) {
+            return;
+        }
+        current.formHeight = height;
+        this.setData({
+            currentFormOptions:current,
+            currentHeight:height + unit
         })
         this.initStyle()
     }
