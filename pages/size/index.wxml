@@ -1,14 +1,14 @@
 <view class="">
         <view class="custom-size-photo">
-            <view class="mmBlock"></view>
-            <view class="_section container">
+            
+            <view class="container">
                 <view class="image-wrap">
                     <view class="height-control" style="{{lineHeight}}" >
                         <label class="_span">{{height}}</label>
                     </view>
                     <view class="imageWrap" style="{{imageWrapStyle}}" >
-                        <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" data-cid="{{_c||c}}" data-hid="{{11}}" mode="widthFix" src="https://c01.parameters.cn/image/fw8mR5KEDQQUimnX.png" 
-                        animation="{{animationData}}"
+                        <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" mode="widthFix" src="https://c01.parameters.cn/image/fw8mR5KEDQQUimnX.png" 
+                       
                          ></image>
                     </view>
                     <view class="width-control" style="{{lineWidth}}" >
