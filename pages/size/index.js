@@ -188,7 +188,8 @@ Page({
             currentWidth:currentWidth+unit,
             currentHeight:currentHeight + unit
         })
-        this.initStyle()
+        this.initStyle();
+        this.enableNextStep();
     },
     inputWidth(e){
         let value = e.detail.value;
