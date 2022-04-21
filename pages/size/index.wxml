@@ -4,15 +4,14 @@
             <view class="container">
                 <view class="image-wrap">
                     <view class="height-control" style="{{lineHeight}}" >
-                        <label class="_span">{{height}}</label>
+                        <label class="_span">{{currentHeight}}</label>
                     </view>
                     <view class="imageWrap" style="{{imageWrapStyle}}" >
                         <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" mode="widthFix" src="https://c01.parameters.cn/image/fw8mR5KEDQQUimnX.png" 
-                       
                          ></image>
                     </view>
                     <view class="width-control" style="{{lineWidth}}" >
-                        <label class="_span">{{width}}</label>
+                        <label class="_span">{{currentWidth}}</label>
                     </view>
                 </view>
             </view>
@@ -23,7 +22,7 @@
                 <view class="form-item-wrap">
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number" value="{{h[24].value}}"></input>
+                            <input bindinput="_pe" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number"></input>
                             <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">宽度</label>
@@ -31,14 +30,14 @@
                     <view class="symbol">X</view>
                     <view class="form-item-input">
                         <view class="custom-input">
-                            <input bindinput="_pe" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" value="{{h[37].value}}"></input>
+                            <input bindinput="_pe" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" ></input>
                             <label class="_span">{{units[selectedUnit].value}}</label>
                         </view>
                         <label class="_label">高度</label>
                     </view>
                 </view>
-                <van-button bindtap="_pe" class="_van-button" data-cid="{{_c||c}}" data-hid="{{45}}" disabled="{{h[45].disabled}}" size="large" type="primary">下一步
-        </van-button>
+                <van-button class="_van-button"   disabled="{{disabled}}" size="large" type="primary">下一步
+                </van-button>
             </view>
         </view>
     </view>

@@ -1,11 +1,10 @@
-import * as watch from "../../utils/watch.js";
 Page({
     data:{
-        width: '295px',
-        height: '413px',
-        lineWidth: 'width:172px;',
-        lineHeight: 'width: 237.33333333333334px;',
-        imageWrapStyle:'width: 162.38095238095238px;height: 227.33333333333334px;',
+        width: '',
+        height: '',
+        lineWidth: '',
+        lineHeight: '',
+        imageWrapStyle:'',
         currentWidth:0,
         currentHeight:0,
         mmSize: 0,
@@ -59,12 +58,10 @@ Page({
                 height: ""
             }
         },
-
+        disabled:true
     },
     onLoad(){
-       
         this.initData();
-        
         this.initWidth();
         this.initStyle();
     },
@@ -73,9 +70,9 @@ Page({
     },
     initWidth(){
         this.setData({
-            currentWidth:this.width(),
-            currentHeight:this.height(),
-            currentFormOptions:this.data.pxFormOptions
+            currentFormOptions:this.data.pxFormOptions,
+            currentWidth: this.data.pxFormOptions.defaultWidth + 'px',
+            currentHeight: this.data.pxFormOptions.defaultHeight+ 'px',
         })
     },
     onShow(){
@@ -103,22 +100,18 @@ Page({
             i[1], i[2], t.data.mmSize = i[3].width / 100, t.data.viewPort = i[4], t.data.imageBoxStyleOptions.imageWrap.maxWidth = e.width / 3 * 2, 
             t.data.imageBoxStyleOptions.imageWrap.minHeight = t.data.imageBoxStyleOptions.imageWrap.minWidth = 100, 
             t.data.imageBoxStyleOptions.imageWrap.maxHeight = e.height / 3 * 2;
-                
         });
     },
     initStyle(){
         let heightControl = this.heightControlStyles();
         let widthControl = this.widthControlStyles();
         let imageStyle = this.imageStyles();
-        let wrapStyles = this.wrapStyles();
-        console.log(heightControl,widthControl,imageStyle,wrapStyles)
-        let test = 'flex: 0 0 297.377px;        width: 297.377px;        height: 227.332px;' ;
+        let wrapStyles = this.wrapStyles();   
         this.setData({
             imageStyle:imageStyle,
             lineHeight:heightControl,
             lineWidth:widthControl,
             imageWrapStyle:wrapStyles,
-            
         })
     },
     width(){
@@ -131,7 +124,6 @@ Page({
         return this.width() / this.height();
     },
     wrapOptions() {
-        console.log(this.data.mmSize)
         var t = this.width(), i = this.height();
         "mm" === this.unit() && (t *= this.data.mmSize, i *= this.data.mmSize);
         var e = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.data.imageBoxStyleOptions.imageWrap.maxHeight;
@@ -149,7 +141,6 @@ Page({
         return this.data.units[this.data.selectedUnit].value;
     },
     imageOnLoad(e){
-        
         this.setData({
             imageSize:e.detail
         })
@@ -165,9 +156,7 @@ Page({
     },
     imageStyles () {
         var t = (this.data.imageSize.width / this.data.imageSize.height) || 0;
-        console.log(t)
         let wrapOption = this.wrapOptions();
-        console.log(this.ratio() < 25 / 35,wrapOption)
         return this.ratio() < 25 / 35 ?  'flex: 0 0 ' + (1.7 *  wrapOptions.width) + 'px;'
           : 'flex: 0 0 ' + (wrapOption.height * t) + 'px;'+'width: '+(wrapOption.height * t) + 'px;'
         ;
@@ -178,20 +167,25 @@ Page({
         
     },
     clickUnit(e){
-        console.log(e.detail)
+        
         let current =  this.data.currentFormOptions;
+        let currentWidth = current.formWidth;
+        let currentHeight = current.formHeight;
         let index = e.detail.index;
         if (index==0) {
             current = this.data.pxFormOptions
         }else{
             current = this.data.mmFormOptions;
         }
-        console.log(current)
+        let unit = this.data.units[index].value;
+        currentWidth = currentWidth || current.defaultWidth;
+        currentHeight = currentHeight || current.defaultHeight;
+        
         this.setData({
             selectedUnit: e.detail.index,
             currentFormOptions:current,
-            width:this.width(),
-            height:this.height()
+            currentWidth:currentWidth+unit,
+            currentHeight:currentHeight + unit
         })
         this.initStyle()
     }
