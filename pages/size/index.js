@@ -191,17 +191,34 @@ Page({
         this.initStyle()
     },
     inputWidth(e){
-
+        let value = e.detail.value;
+        let width = parseFloat(value) || 0;
+        let unit = this.data.units[this.data.selectedUnit].value;
+        let current =  this.data.currentFormOptions;
+        let minWidth = current.minWidth;
+        let maxWidth = current.maxWidth;
+        if (width<minWidth || width>maxWidth) {
+            this.setData({disabled:true})
+            return;
+        }
+        current.formWidth = width;
+        this.setData({
+            currentFormOptions:current,
+            currentWidth:width + unit
+        })
+        this.initStyle()
+        this.enableNextStep();
     },
     inputHeight(e){
         let value = e.detail.value;
         let height = parseFloat(value) || 0;
-        console.log(height)
+       
         let unit = this.data.units[this.data.selectedUnit].value;
         let current =  this.data.currentFormOptions;
         let minHeight = current.minHeight;
         let maxHeight = current.maxHeight;
         if (height<minHeight || height>maxHeight) {
+            this.setData({disabled:true})
             return;
         }
         current.formHeight = height;
@@ -209,6 +226,22 @@ Page({
             currentFormOptions:current,
             currentHeight:height + unit
         })
-        this.initStyle()
+        this.initStyle();
+        this.enableNextStep();
+    },
+    enableNextStep(){
+        let current =  this.data.currentFormOptions;
+        let width = current.formWidth;
+        let height = current.formHeight;
+        let unit = this.data.units[this.data.selectedUnit].value;
+        //console.log(width,height,unit);
+        let disabled = true;
+        if (width && height && width<= current.maxWidth && width>=current.minWidth &&
+            height<=current.maxHeight && height>=current.minHeight) {
+            disabled = false;
+        }
+        this.setData({
+            disabled:disabled
+        })
     }
 })
