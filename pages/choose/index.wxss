@@ -33,3 +33,6 @@
 .startTake{
     margin-right: 60rpx;
 }
+.background{
+    float: right;
+}

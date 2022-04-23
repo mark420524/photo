@@ -16,3 +16,6 @@ page {
 .grayColor{
   color: #aaaaaa;
 }
+.clear{
+  clear: both;
+}

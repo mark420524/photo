@@ -1,4 +1,5 @@
 // app.js
+import util from 'utils/util.js'
 App({
   onLaunch() {
     // 登录
@@ -10,5 +11,6 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  utils: util,
 })

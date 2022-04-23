@@ -25,15 +25,29 @@
         </view>
     </view>
     <view class="chooseBackground">
-            <view>背景色</view>  
+            <view class="blackColor">
+            背景色
+                <view class="background">
+                    <van-radio-group
+                        value="{{ color }}"
+                        bind:change="onChangeColor"
+                        direction="horizontal"
+                        >
+                        <van-radio name="red">红底</van-radio>
+                        <van-radio name="blue">蓝底</van-radio>
+                        <van-radio name="white">白底</van-radio>
+                    </van-radio-group>
+                </view>
+                <view class="clear"></view>
+            </view>  
     </view>
     <view class="footer">
         <view class="operate">
-            <view class="">
+            <view class="" bindtap="chooseImage">
             <van-button  type="primary" color="#8dc63f">
             
             相册选择</van-button></view>
-            <view class="startTake"><van-button  type="primary" color="#0081ff">
+            <view class="startTake" bindtap="takeImageFromCamera"><van-button  type="primary" color="#0081ff">
             
             开始拍摄</van-button></view>
         </view>
