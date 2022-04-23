@@ -14,8 +14,8 @@
   <van-grid column-num="2" border="{{ false }}">
         <van-grid-item use-slot wx:for="{{ categoryies }}" wx:key="index" bind:click="handlerItemClick" data-category="{{item}}" wx:for-item="item">
             <view class="item">                 
-                <view class="name">{{item.spec_name}}</view>
-                <view class="size">尺寸:{{ item.width_mm}}x{{item.height_mm}} mm</view>
+                <view class="name">{{item.name}}</view>
+                <view class="size">尺寸:{{ item.mmWidth}}x{{item.mmHeight}} mm</view>
             </view>
         </van-grid-item>
   </van-grid>

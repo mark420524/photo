@@ -7,7 +7,7 @@
                         <label class="_span">{{currentHeight}}</label>
                     </view>
                     <view class="imageWrap" style="{{imageWrapStyle}}" >
-                        <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" mode="widthFix" src="https://c01.parameters.cn/image/fw8mR5KEDQQUimnX.png" 
+                        <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" mode="widthFix" src="http://image.siival.com/modal.webp" 
                          ></image>
                     </view>
                     <view class="width-control" style="{{lineWidth}}" >
