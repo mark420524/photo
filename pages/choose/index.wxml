@@ -1,36 +1,41 @@
 <view class="main">
     <view class="guide">
-        <van-image width="100%" height="250" src="/static/images/unreceipt.gif"/>
+        <van-image width="100%" height="240" src="/static/images/unreceipt.gif"/>
     </view>
     <view class="tips">
-        <view>名称</view>
-        <view>
-            <view>
-                <text>像素大小</text>
-                <text>295x413px</text>
+        <view class="sizeName">{{size.name}}</view>
+        <view class="tipsDetail" >
+            <view class="tipsItem">
+                <text class="blackColor">像素大小</text>
+                <text  class="grayColor">{{size.pxWidth}}x{{size.pxHeight}}px</text>
             </view>
-            <view>
-                <text>照片尺寸</text>
-                <text>25x35</text>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">照片尺寸</text>
+                <text  class="grayColor">{{size.mmWidth}}x{{size.mmHeight}}mm</text>
             </view>
-            <view>
-                <text>文件大小</text>
-                <text>无限制</text>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">文件大小</text>
+                <text  class="grayColor">无限制</text>
             </view>
-            <view>
-                <text>照片格式</text>
-                <text>jpg、png</text>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">照片格式</text>
+                <text class="grayColor">jpg、png</text>
             </view>
-        </view>
-
-        <view>
-            <view>背景色</view>
             
         </view>
     </view>
-
-    <view class="fotter">
-        <view>相册选择</view>
-        <view>开始拍摄</view>
+    <view class="chooseBackground">
+            <view>背景色</view>  
+    </view>
+    <view class="footer">
+        <view class="operate">
+            <view class="">
+            <van-button  type="primary" color="#8dc63f">
+            
+            相册选择</van-button></view>
+            <view class="startTake"><van-button  type="primary" color="#0081ff">
+            
+            开始拍摄</van-button></view>
+        </view>
     </view>
 </view>

@@ -1,6 +1,7 @@
 {
     "navigationBarTitleText": "选择图片",
     "usingComponents": {
-        "van-image": "../../components/vant/image/index"
+        "van-image": "../../components/vant/image/index",
+        "van-button": "../../components/vant/button/index"
     }
 }

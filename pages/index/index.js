@@ -10,11 +10,16 @@ Page({
   },
   handlerItemClick(e){
     let item = e.currentTarget.dataset.category;
-    console.log(item)
+    
     let customer = item.customer || 0 ;
     if (customer) {
       wx.navigateTo({
         url: '/pages/size/index',
+      })
+    }else{
+      wx.setStorageSync('photoSize', item);
+      wx.navigateTo({
+        url: '/pages/choose/index',
       })
     }
   },

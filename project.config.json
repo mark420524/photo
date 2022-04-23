@@ -5,6 +5,10 @@
             {
                 "type": "file",
                 "value": ".eslintrc.js"
+            },
+            {
+                "type": "folder",
+                "value": "data"
             }
         ]
     },

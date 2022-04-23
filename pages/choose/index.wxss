@@ -1,0 +1,35 @@
+.tips{
+    padding: 30rpx;
+    border-radius: 10rpx;
+}
+.tipsDetail{
+    margin-top: 40rpx;
+}
+.sizeName{
+    font-size: 30rpx;
+}
+.tipsItem{
+    display: flex;
+    justify-content: space-between;
+}
+.paddingTop{
+    padding-top: 20rpx;
+}
+.chooseBackground{
+    padding: 30rpx;
+    font-size: 30rpx;
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    background-color: #ffffff;
+    bottom: 0;
+    padding: 30rpx;
+}
+.operate{
+    display: flex;
+    justify-content: space-between;
+}
+.startTake{
+    margin-right: 60rpx;
+}

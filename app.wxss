@@ -1,7 +1,18 @@
 /**app.wxss**/
 page {
-  background-color: #f0f2f7;
+ --black: #333333;
+ --background: #f0f2f7;
+  background-color: var(--background);
+  font-size: 28rpx;
+	color: var(--black);
+	font-family: Helvetica Neue, Helvetica, sans-serif;
 }
 .main{
   background-color: white;
+}
+.blackColor{
+  color: var(--black);
+}
+.grayColor{
+  color: #aaaaaa;
 }
