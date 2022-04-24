@@ -40,7 +40,7 @@
                         <label class="_label">高度</label>
                     </view>
                 </view>
-                <van-button disabled="{{disabled}}" size="large" type="primary">下一步
+                <van-button disabled="{{disabled}}" bind:click="gotoChooseImage" size="large" type="primary">下一步
                 </van-button>
             </view>
         </view>

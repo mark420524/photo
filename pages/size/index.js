@@ -244,5 +244,41 @@ Page({
         this.setData({
             disabled:disabled
         })
+    },
+    round (t) {
+        return Math.round(Math.round(1e4 * t) / 1e4);
+    },
+    mmToPX(t) {
+        return this.round(t / 25.4 * 300);
+    },
+    pxToMM(t) {
+        return this.round(25.4 * t / 300);
+    },
+    gotoChooseImage(){
+        let current =  this.data.currentFormOptions;
+        let width = current.formWidth;
+        let height = current.formHeight;
+        let unit = this.data.units[this.data.selectedUnit].value;
+        console.log(unit)
+        let photoSize = {
+            color:'',
+            name:'自定义尺寸'
+        }
+       
+        if(unit=='px'){
+            photoSize.pxHeight = height;
+            photoSize.pxWidth = width;
+            photoSize.mmHeight = this.pxToMM(height);
+            photoSize.mmWidth = this.pxToMM(width);
+        }else{
+            photoSize.mmHeight = height;
+            photoSize.mmWidth = width;
+            photoSize.pxHeight = this.mmToPX(height);
+            photoSize.pxWidth = this.mmToPX(width);
+        }
+        wx.setStorageSync('photoSize', photoSize);
+        wx.navigateTo({
+            url: '/pages/choose/index',
+        })
     }
 })

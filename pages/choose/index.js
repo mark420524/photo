@@ -2,11 +2,12 @@ const app = getApp();
 const utils = app.utils;
 Page({
     data:{
-        size:{}
+        size:{},
+        color:'',
     },
     onLoad(){
         let size = wx.getStorageSync('photoSize');
-        this.setData({size:size})
+        this.setData({size:size,color:size.color})
     },
     unloadInfo(){
         wx.removeStorageSync('photoSize')
