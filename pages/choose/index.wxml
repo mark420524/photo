@@ -43,11 +43,11 @@
     </view>
     <view class="footer">
         <view class="operate">
-            <view class="" bindtap="chooseImage">
+            <view class="" bindtap="chooseImage" data-source-type="album">
             <van-button  type="primary" color="#8dc63f">
             
             相册选择</van-button></view>
-            <view class="startTake" bindtap="takeImageFromCamera"><van-button  type="primary" color="#0081ff">
+            <view class="startTake" bindtap="chooseImage" data-source-type="camera"><van-button  type="primary" color="#0081ff">
             
             开始拍摄</van-button></view>
         </view>

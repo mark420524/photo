@@ -1,5 +1,5 @@
 import {
-    http
+    http,uploadFile
   } from 'http.js'
   import CONSTANT from '../utils/constant';
   const apiUrl=CONSTANT.apiUrl; //服务器api地址
@@ -19,9 +19,14 @@ import {
       })
     },
     imageUpload(data){
-      return http({
+      let fileName = data.name || 'file';
+      let filePath = data.filePath;
+      delete data.name;
+      return uploadFile({
         url:url.imageUpload,
         data:data,
+        name:fileName,
+        filePath:filePath,
         method:'POST'
       })
     }
