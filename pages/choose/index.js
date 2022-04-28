@@ -48,8 +48,7 @@ Page({
             }
             console.log(data)
             apis.imageUpload(data).then(res=>{
-              wx.hideLoading()
-              res.forEach()
+              wx.hideLoading();
               console.log(res)
             })
           },

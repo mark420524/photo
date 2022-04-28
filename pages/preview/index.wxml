@@ -1,0 +1,15 @@
+<view class="main">
+    <view class="previewImage">
+      <view class="imageView" style="background-color: {{iamgeBackground}};width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;">
+        <image src="{{currentImage}}" style="width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;"></image> 
+      </view>
+      
+   
+    </view>
+    <view class="operateBack">
+        
+    </view>
+    <view class="operateInfo">
+    
+    </view>
+</view>
