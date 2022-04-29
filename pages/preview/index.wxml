@@ -1,8 +1,15 @@
 <view class="main">
     <view class="previewImage">
-      <view class="imageView" >
-        <image src="{{currentImage}}" style="width: {{targetWidth * showScale}}rpx;height: {{targetHeight * showScale}}rpx;"></image> 
-      </view>
+      <preview  
+        current-height="{{currentHeight}}" 
+        image-src="{{currentImage}}" 
+        current-width="{{currentWidth}}"
+        calc-width="{{calcWidth}}"
+        calc-height="{{calcHeight}}"
+        unit="{{unit}}"
+        bind:imageonload="imageOnLoad"
+        background="{{background}}"
+            />
       
    
     </view>

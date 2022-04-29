@@ -4,22 +4,3 @@
 	flex-flow: column;
 	font-size: 28rpx;
 }
-.previewImage{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #eee;
-    min-height: 800rpx;
-}
-.imageView{
-	position: relative;
-    max-width: 600rpx;
-    max-height: 600rpx;
-    background-color: #fff;
-    padding: 10rpx;
-    box-sizing: border-box;
-    transition: all 300ms ease-in-out;
-    box-shadow: 4rpx 4rpx 10rpx #999;
-    will-change: width;
-    font-size: 24rpx;
-}

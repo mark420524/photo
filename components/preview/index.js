@@ -8,6 +8,10 @@ Component({
         unit: {
             type: String,
             value: 'px'
+        },
+        background:{
+            type:String,
+            value:'#438edb'
         }
     },
     data:{
@@ -89,9 +93,8 @@ Component({
             ;
         },
         wrapStyles: function() {
-            let wrapOption = this.wrapOptions();
+            let wrapOption = this.wrapOptions();            
             return 'width: '+wrapOption.width + 'px;'+ 'height: '+wrapOption.height + 'px;';
-            
         },
         width(){
             return this.properties.calcWidth

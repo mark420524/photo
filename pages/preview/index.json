@@ -1,4 +1,6 @@
 {
     "navigationBarTitleText": "图片预览",
-    "usingComponents": {}
+    "usingComponents": {
+        "preview": "../../components/preview/index"
+    }
 }

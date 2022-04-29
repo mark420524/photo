@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     min-height: 800rpx;
+    background-color: var(--background);
 }
 
  .image-wrap {
@@ -93,7 +94,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    background-color: #438edb;
     overflow: hidden;
     box-sizing: border-box;
     max-width: 100%;
