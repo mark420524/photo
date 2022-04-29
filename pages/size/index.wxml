@@ -1,15 +1,13 @@
 <view class="">
         <view class="custom-size-photo">
-            <preview 
-            id="preview"
-            line-height="{{lineHeight}}"
-        current-height="{{currentHeight}}"
-        image-wrap-style="{{imageWrapStyle}}"
-        image-style="{{imageStyle}}"
-        image-src="{{imageSrc}}"
-        line-width="{{lineWidth}}"
+            <preview  
+        current-height="{{currentHeight}}" 
+        image-src="{{imageSrc}}" 
         current-width="{{currentWidth}}"
-        bind:imageload="imageOnLoad"
+        calc-width="{{calcWidth}}"
+        calc-height="{{calcHeight}}"
+        unit="{{unit}}"
+        bind:imageonload="imageOnLoad"
             />
             <view class="form">
                 <van-tabs bindchange="clickUnit" active="{{selectedUnit}}" color="#1989fa" >

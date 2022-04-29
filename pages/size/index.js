@@ -1,7 +1,7 @@
 Page({
     data:{
-        width: '',
-        height: '',
+        calcWidth: 0,
+        calcHeight: 0,
         lineWidth: '',
         lineHeight: '',
         imageWrapStyle:'',
@@ -20,6 +20,7 @@ Page({
             label: "毫米",
             value: "mm"
         } ],
+        unit:'',
         selectedUnit: 0,
         pxFormOptions: {
             defaultWidth: 295,
@@ -62,9 +63,9 @@ Page({
         imageSrc:'/static/images/background.png'
     },
     onLoad(){
-        this.initData();
+        //this.initData();
         this.initWidth();
-        this.initStyle();
+        //this.initStyle();
     },
     onReady(){
         
@@ -73,24 +74,13 @@ Page({
         this.setData({
             currentFormOptions:this.data.pxFormOptions,
             currentWidth: this.data.pxFormOptions.defaultWidth + 'px',
-            currentHeight: this.data.pxFormOptions.defaultHeight+ 'px'
+            currentHeight: this.data.pxFormOptions.defaultHeight+ 'px',
         })
     },
     onShow(){
         
     },
-    sizeControl: function() {
-        return {
-            min: {
-                width: this.data.currentFormOptions.minWidth,
-                height: this.data.currentFormOptions.minHeight
-            },
-            max: {
-                width: this.data.currentFormOptions.maxWidth,
-                height: this.data.currentFormOptions.maxHeight
-            }
-        };
-    },
+   
     initData  () {
         var t = this, i = wx.createSelectorQuery().in( this.selectComponent('#preview'));
         i.select(".container").boundingClientRect(), i.select(".image").boundingClientRect(), 
@@ -150,12 +140,13 @@ Page({
     unit() {
         return this.data.units[this.data.selectedUnit].value;
     },
-    imageOnLoad(e){
-        
+    imageOnLoad( ){
+        console.log(12313)
         this.setData({
-            imageSize:e.detail
+            calcWidth:this.data.pxFormOptions.defaultWidth,
+            calcHeight:this.data.pxFormOptions.defaultHeight
         })
-        this.initStyle()
+        
     },
     heightControlStyles () {
         let wrapper = this.wrapOptions();
@@ -193,14 +184,16 @@ Page({
         let unit = this.data.units[index].value;
         currentWidth = currentWidth || current.defaultWidth;
         currentHeight = currentHeight || current.defaultHeight;
-        
+            
         this.setData({
             selectedUnit: e.detail.index,
             currentFormOptions:current,
             currentWidth:currentWidth+unit,
-            currentHeight:currentHeight + unit
+            currentHeight:currentHeight + unit,
+            calcWidth:currentWidth,
+            calcHeight:currentHeight,
+            unit:unit
         })
-        this.initStyle();
         this.enableNextStep();
     },
     inputWidth(e){
@@ -217,9 +210,11 @@ Page({
         current.formWidth = width;
         this.setData({
             currentFormOptions:current,
-            currentWidth:width + unit
+            currentWidth:width + unit,
+            unit:unit,
+            calcWidth:width
         })
-        this.initStyle()
+        
         this.enableNextStep();
     },
     inputHeight(e){
@@ -237,9 +232,10 @@ Page({
         current.formHeight = height;
         this.setData({
             currentFormOptions:current,
-            currentHeight:height + unit
-        })
-        this.initStyle();
+            currentHeight:height + unit,
+            unit:unit,
+            calcHeight:height
+        }) 
         this.enableNextStep();
     },
     enableNextStep(){
