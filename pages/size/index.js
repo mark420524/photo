@@ -73,8 +73,7 @@ Page({
         this.setData({
             currentFormOptions:this.data.pxFormOptions,
             currentWidth: this.data.pxFormOptions.defaultWidth + 'px',
-            currentHeight: this.data.pxFormOptions.defaultHeight+ 'px',
-            mmSize:3.2
+            currentHeight: this.data.pxFormOptions.defaultHeight+ 'px'
         })
     },
     onShow(){
