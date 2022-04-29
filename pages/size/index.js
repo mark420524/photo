@@ -2,17 +2,8 @@ Page({
     data:{
         calcWidth: 0,
         calcHeight: 0,
-        lineWidth: '',
-        lineHeight: '',
-        imageWrapStyle:'',
-        currentWidth:0,
-        currentHeight:0,
-        mmSize: 0,
-        imageSize: {
-            width: 0,
-            height: 0
-        },
-        viewPort: {},
+        currentWidth:'',
+        currentHeight:'',
         units: [ {
             label: "像素",
             value: "px"
@@ -49,23 +40,11 @@ Page({
         currentFormOptions:{
             
         },
-        imageBoxStyleOptions: {
-            imageWrap: {
-                maxWidth: "",
-                minWidth: "",
-                maxHeight: "",
-                minHeight: "",
-                width: "",
-                height: ""
-            }
-        },
         disabled:true,
         imageSrc:'/static/images/background.png'
     },
     onLoad(){
-        //this.initData();
         this.initWidth();
-        //this.initStyle();
     },
     onReady(){
         
@@ -80,99 +59,14 @@ Page({
     onShow(){
         
     },
-   
-    initData  () {
-        var t = this, i = wx.createSelectorQuery().in( this.selectComponent('#preview'));
-        i.select(".container").boundingClientRect(), i.select(".image").boundingClientRect(), 
-        i.select(".imageWrap").boundingClientRect(),   
-        i.selectViewport().boundingClientRect(), i.exec(function(i) {
-            var e = i[0];
-            i[1], i[2], t.data.mmSize = i[3].width / 100, t.data.viewPort = i[4], t.data.imageBoxStyleOptions.imageWrap.maxWidth = e.width / 3 * 2, 
-            t.data.imageBoxStyleOptions.imageWrap.minHeight = t.data.imageBoxStyleOptions.imageWrap.minWidth = 100, 
-            t.data.imageBoxStyleOptions.imageWrap.maxHeight = e.height / 3 * 2;
-        });
-    },
-    initStyle(){
-        let heightControl = this.heightControlStyles();
-        let widthControl = this.widthControlStyles();
-        let imageStyle = this.imageStyles();
-        let wrapStyles = this.wrapStyles();   
-        this.setData({
-            imageStyle:imageStyle,
-            lineHeight:heightControl,
-            lineWidth:widthControl,
-            imageWrapStyle:wrapStyles,
-        })
-    },
-    width(){
-        return this.data.currentFormOptions.formWidth || this.data.currentFormOptions.defaultWidth;
-    },
-    height() {
-        return this.data.currentFormOptions.formHeight || this.data.currentFormOptions.defaultHeight;
-    },
-    ratio () {
-        return this.width() / this.height();
-    },
-    wrapOptions() {
-        var t = this.width(), 
-            i = this.height();
-            "mm" === this.unit() && (t *= this.data.mmSize, i *= this.data.mmSize);
-        var e = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.data.imageBoxStyleOptions.imageWrap.maxHeight;
-        (
-            this.width() > this.data.imageBoxStyleOptions.imageWrap.maxWidth || this.height() > this.data.imageBoxStyleOptions.imageWrap.maxHeight
-        ) && (
-            this.ratio() > e ? 
-                (
-                t = this.data.imageBoxStyleOptions.imageWrap.maxWidth, 
-                i = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.ratio()
-                ) : (
-                    i = this.data.imageBoxStyleOptions.imageWrap.maxHeight, 
-                    t = this.data.imageBoxStyleOptions.imageWrap.maxHeight * this.ratio()
-                    )
-            );
-        var n = wx.getSystemInfoSync();
-        return t > 580 / 750 * n.windowWidth && (t = 580 / 750 * n.windowWidth), i > 580 / 750 * n.windowWidth && (i = 580 / 750 * n.windowWidth), 
-        {
-            width: t||0,
-            height: i||0
-        };
-    },
-    unit() {
-        return this.data.units[this.data.selectedUnit].value;
-    },
     imageOnLoad( ){
-        console.log(12313)
         this.setData({
             calcWidth:this.data.pxFormOptions.defaultWidth,
             calcHeight:this.data.pxFormOptions.defaultHeight
         })
-        
-    },
-    heightControlStyles () {
-        let wrapper = this.wrapOptions();
-        return 'width:'+ ( wrapper.height + 10 ) + 'px;' ;
-    },
-    widthControlStyles () {
-        let wrapper = this.wrapOptions();
-        return 'width:'+( wrapper.width + 10 ) + 'px;';
-    },
-    imageStyles () {
-        var t = (this.data.imageSize.width / this.data.imageSize.height) || 0;
-        let wrapOption = this.wrapOptions();
-        return this.ratio() < 25 / 35 ?  'flex: 0 0 ' + (1.7 *  wrapOption.width) + 'px;'
-          : 'flex: 0 0 ' + (wrapOption.height * t) + 'px;'+'width: '+(wrapOption.height * t) + 'px;'
-        ;
-    },
-    wrapStyles: function() {
-        let wrapOption = this.wrapOptions();
-        return 'width: '+wrapOption.width + 'px;'+ 'height: '+wrapOption.height + 'px;';
-        
     },
     clickUnit(e){
-        
         let current =  this.data.currentFormOptions;
-        console.log(current)
-        
         let index = e.detail.index;
         if (index==0) {
             current = this.data.pxFormOptions
@@ -184,7 +78,6 @@ Page({
         let unit = this.data.units[index].value;
         currentWidth = currentWidth || current.defaultWidth;
         currentHeight = currentHeight || current.defaultHeight;
-            
         this.setData({
             selectedUnit: e.detail.index,
             currentFormOptions:current,
