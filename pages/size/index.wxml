@@ -1,20 +1,16 @@
 <view class="">
         <view class="custom-size-photo">
-            
-            <view class="container">
-                <view class="image-wrap">
-                    <view class="height-control" style="{{lineHeight}}" >
-                        <label class="_span">{{currentHeight}}</label>
-                    </view>
-                    <view class="imageWrap" style="{{imageWrapStyle}}" >
-                        <image alt="true" bindload="imageOnLoad" class="_image image" style="{{imageStyle}}" mode="widthFix" src="/static/images/background.png" 
-                         ></image>
-                    </view>
-                    <view class="width-control" style="{{lineWidth}}" >
-                        <label class="_span">{{currentWidth}}</label>
-                    </view>
-                </view>
-            </view>
+            <preview 
+            id="preview"
+            line-height="{{lineHeight}}"
+        current-height="{{currentHeight}}"
+        image-wrap-style="{{imageWrapStyle}}"
+        image-style="{{imageStyle}}"
+        image-src="{{imageSrc}}"
+        line-width="{{lineWidth}}"
+        current-width="{{currentWidth}}"
+        bind:imageload="imageOnLoad"
+            />
             <view class="form">
                 <van-tabs bindchange="clickUnit" active="{{selectedUnit}}" color="#1989fa" >
                     <van-tab title="{{unit.label}}" name=""   wx:for="{{units}}" wx:for-item="unit" wx:key="index"></van-tab>

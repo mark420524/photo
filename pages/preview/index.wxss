@@ -1,21 +1,25 @@
 .main {
-	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
+	display: flex;
+	flex-flow: column;
+	font-size: 28rpx;
 }
 .previewImage{
-    padding: 5px;
-	padding-bottom: 15px;
-	width: 100%;
-	background: '#e6e2e';
-	box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    min-height: 800rpx;
 }
 .imageView{
-    position: relative;
-	width: 100%;
-	height: 300px;
-	margin: 0 auto;
-	box-sizing: content-box;
-	overflow: hidden;
-	overflow: hidden;
+	position: relative;
+    max-width: 600rpx;
+    max-height: 600rpx;
+    background-color: #fff;
+    padding: 10rpx;
+    box-sizing: border-box;
+    transition: all 300ms ease-in-out;
+    box-shadow: 4rpx 4rpx 10rpx #999;
+    will-change: width;
+    font-size: 24rpx;
 }

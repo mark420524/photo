@@ -1,9 +1,9 @@
 {
   "pages":[
-    "pages/preview/index",
+    
     "pages/index/index",
     "pages/choose/index",
-    
+    "pages/preview/index",
     "pages/size/index"
     
   ],

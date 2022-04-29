@@ -58,7 +58,8 @@ Page({
                 height: ""
             }
         },
-        disabled:true
+        disabled:true,
+        imageSrc:'/static/images/background.png'
     },
     onLoad(){
         this.initData();
@@ -73,6 +74,7 @@ Page({
             currentFormOptions:this.data.pxFormOptions,
             currentWidth: this.data.pxFormOptions.defaultWidth + 'px',
             currentHeight: this.data.pxFormOptions.defaultHeight+ 'px',
+            mmSize:3.2
         })
     },
     onShow(){
@@ -91,7 +93,7 @@ Page({
         };
     },
     initData  () {
-        var t = this, i = wx.createSelectorQuery();
+        var t = this, i = wx.createSelectorQuery().in( this.selectComponent('#preview'));
         i.select(".container").boundingClientRect(), i.select(".image").boundingClientRect(), 
         i.select(".imageWrap").boundingClientRect(),   
         i.selectViewport().boundingClientRect(), i.exec(function(i) {
@@ -123,12 +125,22 @@ Page({
         return this.width() / this.height();
     },
     wrapOptions() {
-        var t = this.width(), i = this.height();
-        "mm" === this.unit() && (t *= this.data.mmSize, i *= this.data.mmSize);
+        var t = this.width(), 
+            i = this.height();
+            "mm" === this.unit() && (t *= this.data.mmSize, i *= this.data.mmSize);
         var e = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.data.imageBoxStyleOptions.imageWrap.maxHeight;
-        (this.width() > this.data.imageBoxStyleOptions.imageWrap.maxWidth || this.height() > this.data.imageBoxStyleOptions.imageWrap.maxHeight) && (this.ratio() > e ? (t = this.data.imageBoxStyleOptions.imageWrap.maxWidth, 
-        i = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.ratio()) : (i = this.data.imageBoxStyleOptions.imageWrap.maxHeight, 
-        t = this.data.imageBoxStyleOptions.imageWrap.maxHeight * this.ratio()));
+        (
+            this.width() > this.data.imageBoxStyleOptions.imageWrap.maxWidth || this.height() > this.data.imageBoxStyleOptions.imageWrap.maxHeight
+        ) && (
+            this.ratio() > e ? 
+                (
+                t = this.data.imageBoxStyleOptions.imageWrap.maxWidth, 
+                i = this.data.imageBoxStyleOptions.imageWrap.maxWidth / this.ratio()
+                ) : (
+                    i = this.data.imageBoxStyleOptions.imageWrap.maxHeight, 
+                    t = this.data.imageBoxStyleOptions.imageWrap.maxHeight * this.ratio()
+                    )
+            );
         var n = wx.getSystemInfoSync();
         return t > 580 / 750 * n.windowWidth && (t = 580 / 750 * n.windowWidth), i > 580 / 750 * n.windowWidth && (i = 580 / 750 * n.windowWidth), 
         {
@@ -140,6 +152,7 @@ Page({
         return this.data.units[this.data.selectedUnit].value;
     },
     imageOnLoad(e){
+        
         this.setData({
             imageSize:e.detail
         })
