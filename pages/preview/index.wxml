@@ -10,11 +10,21 @@
         bind:imageonload="imageOnLoad"
         background="{{background}}"
             />
-      
-   
+    </view>
+    <view>
+      <van-tabs bindchange="selectType" active="{{ active }}" color="#1989fa" >
+          <van-tab title="完成图" name="0"    ></van-tab>
+          <van-tab title="原图" name="1"    ></van-tab>
+      </van-tabs>
     </view>
     <view class="operateBack">
-        
+        <view class="color" wx:for="{{colors}}" bindtap="changeBackground"
+        data-color="{{item.color}}"
+        data-index="{{index}}"
+        wx:for-item="item" wx:key="index" style="background-color: {{item.color}};">
+        <van-icon name="success" size="60rpx" color="#cbe6db" custom-style="{{customeStyle[index]}}"/>
+        </view>
+         
     </view>
     <view class="operateInfo">
     
