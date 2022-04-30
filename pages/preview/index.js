@@ -3,6 +3,8 @@ const apis = app.apis;
 const utils = app.utils;
 Page({
     data:{
+        rgb: 'rgb(7,193,96)',
+        pick: false,
         item:{},
         currentImage:'',
         background:'white',
@@ -195,5 +197,21 @@ Page({
         let filename = sourceImage.split('/')
         filename = filename[filename.length-1]
         console.log('compose',color,filename)
-    }
+    },
+    moreColor () {
+        this.setData({
+          pick: true
+        })
+      },
+      pickColor(e) {
+        let customeStyle=[];
+        for (let i=0;i<this.data.colors.length;i++){
+            customeStyle[i]='display:none;';
+        }
+        this.setData({
+            customeStyle:customeStyle,
+            color:e.detail.color,
+            background:e.detail.color
+        })
+      },
 })

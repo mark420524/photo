@@ -24,7 +24,9 @@
         wx:for-item="item" wx:key="index" style="background-color: {{item.color}};">
         <van-icon name="success" size="60rpx" color="#cbe6db" custom-style="{{customeStyle[index]}}"/>
         </view>
-         
+         <view bindtap="moreColor" class="color">
+         <view class="more">更多</view>
+         </view>
     </view>
     <view class="operateInfo">
       <view wx:if="{{savePic}}">
@@ -37,3 +39,5 @@
       </view>
     </view>
 </view>
+
+<color-picker bindchangeColor="pickColor"  show="{{pick}}" />
