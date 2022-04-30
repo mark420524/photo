@@ -48,6 +48,9 @@ Page({
               })
             }
           },
+          fail:function(){
+            utils.showWxToast('获取摄像头拍照权限失败');
+          },
           complete:function(res){
             wx.hideLoading( )
           }
@@ -60,20 +63,21 @@ Page({
           mediaType: ['image'],
           sourceType: [sourceType],
           success(res) {
-              console.log(res)
-              let file_path = res.tempFiles[0].tempFilePath;
-              console.log(file_path)
+            let file_path = res.tempFiles[0].tempFilePath;
             if (file_path === null || file_path === undefined) {
               utils.showWxToast(  '选择文件异常…' )
               return
             }
             
             wx.showLoading({ title: '上传中,请稍等…' })
+            let color = that.data.color || '';
+            let width = that.data.size.pxWidth || '';
+            let height = that.data.size.pxHeight||'';
             let data= {
               filePath:file_path,
-              color: that.data.color||'',
-              width: that.data.size.pxWidth||'',
-              height:that.data.size.pxHeight||''
+              color: color,
+              width: width,
+              height:height
             }
             console.log(data)
             apis.imageUpload(data).then(res=>{

@@ -1,6 +1,7 @@
 {
     "navigationBarTitleText": "图片预览",
     "usingComponents": {
+        "van-button": "../../components/vant/button/index",
         "preview": "../../components/preview/index",
         "van-tab": "../../components/vant/tab/index",
         "van-tabs": "../../components/vant/tabs/index", 

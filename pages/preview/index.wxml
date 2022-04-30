@@ -27,6 +27,13 @@
          
     </view>
     <view class="operateInfo">
-    
+      <view wx:if="{{savePic}}">
+        <van-button  bind:click="savePicToAlbum" size="large" type="primary">保存电子照
+        </van-button>
+      </view>
+      <view wx:else>
+        <van-button   bind:click="composeBackground" size="large" type="primary">合成并保存
+        </van-button>
+      </view>
     </view>
 </view>

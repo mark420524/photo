@@ -18,3 +18,11 @@
 	border-radius: 50%;
 	overflow: hidden;
 }
+.operateInfo{
+	position: fixed;
+    width: 90%;
+    background-color: #ffffff;
+    bottom: 0;
+	padding: 30rpx;
+	
+}

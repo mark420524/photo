@@ -1,4 +1,6 @@
 const app = getApp();
+const apis = app.apis;
+const utils = app.utils;
 Page({
     data:{
         item:{},
@@ -6,6 +8,7 @@ Page({
         background:'white',
         showColors:false,
         showTabs:false,
+        savePic:true,
         active:0,
         currentHeight:0,
         currentWidth:0,
@@ -38,15 +41,16 @@ Page({
         let targetHeight = item.targetHeight;
         let sourceWidth = item.sourceWidth;
         let sourceHeight = item.sourceHeight;
-        let currentHeight = targetHeight || sourceHeight
+        let currentHeight = targetHeight || sourceHeight;
         let currentWidth = targetWidth || sourceWidth;
         let showTabs=false;
         let showColors = false;
         let imageSrc = '';
-
+        let savePic = false;
         if (targetWidth && targetHeight) {
             showTabs=true;
             imageSrc = item.targetImageCut;
+            savePic = true;
         }else{
             showColors = true;
             imageSrc = item.sourceImageNotBack;
@@ -59,10 +63,12 @@ Page({
             height:currentHeight,
             calcWidth:0,
             calcHeight:0, 
-            background:'red',
+            background:'white',
             showColors:showColors,
             showTabs:showTabs,
-            currentImage:imageSrc
+            currentImage:imageSrc,
+            item:item,
+            savePic:savePic
 		})
     },
     buildImageSrc(imageSrc){
@@ -80,7 +86,31 @@ Page({
     },
     selectType(e){
         let detail = e.detail;
-        console.log(detail)
+        let index = detail.index;
+        let item = this.data.item;
+        let currentHeight = '';
+        let currentWidth = '';
+        let imageSrc = '';
+        if (index==0) {
+            //完成图
+            currentHeight = item.targetHeight;
+            currentWidth = item.targetWidth;
+            imageSrc = item.targetImageCut
+        }else{
+            //原图
+            currentHeight = item.sourceHeight;
+            currentWidth = item.sourceWidth;
+            imageSrc = item.sourceImage
+        }
+        imageSrc = this.buildImageSrc(imageSrc)
+        this.setData({
+            background:'white',
+			currentHeight:currentHeight+this.data.unit,
+            currentWidth:currentWidth+this.data.unit,
+            calcWidth:currentWidth,
+            calcHeight:currentHeight,
+            currentImage:imageSrc,
+		})
     },
     changeBackground(e){
         let dataset = e.currentTarget.dataset;
@@ -96,5 +126,63 @@ Page({
             color:color,
             background:color
         })
-    }
+    },
+    savePicToAlbum(){
+        let currentImage = this.data.currentImage;
+        let that =  this;
+        console.log(currentImage)
+        wx.showLoading({
+          title: '正在保存',
+        })
+        wx.getSetting({
+            success(res) {
+                if (res.authSetting['scope.writePhotosAlbum']) {
+
+                    //有保存权限
+                    wx.downloadFile({
+                        url: currentImage,  
+                        success (res) {
+                             
+                            if (res.statusCode === 200) {
+                                console.log(res.tempFilePath)
+                            } else {
+                                utils.showWxToast('下载图像异常')
+                            }
+                        },
+                        fail (error) {
+                            
+                            utils.showWxToast('下载图像异常')
+                        }
+                    })
+                } else {
+                    that.openAuthAlbum()
+                }
+            },
+            fail (res) {
+                utils.showWxToast('获取相册权限失败')
+                console.log(res)
+            },
+            complete( ){
+                wx.hideLoading()
+            }
+        })
+    },
+    openAuthAlbum(){
+        wx.showModal({
+          content: '检测到您没打开访问相册权限，是否打开？',
+          confirmText: "确认",
+          cancelText: "取消",
+          success: function (res) {
+          
+          //点击“确认”时打开设置页面
+          if (res.confirm) {
+            wx.openSetting({
+            success: (res) => { }
+            })
+          } else {
+            console.log('用户点击取消')
+          }
+          }
+        });
+      },
 })
