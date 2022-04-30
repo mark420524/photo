@@ -15,6 +15,6 @@
     <movable-area class="target" style="background-color:{{hueColor}}">
       <movable-view direction="all" bindchange="changeSV" x="{{x}}" y="{{y}}" animation="{{false}}" class="iconfont icon-ios-locate-outline" bindtouchend="onEnd"></movable-view>
     </movable-area>
-    <slider bindchanging="changeHue" activeColor="transparent" backgroundColor="transparent" class="ribbon" max="360" value="{{hsv.h}}" block-color="{{colorRes}}" bindtouchend="onEnd" />
+    <slider bindchange="changeHue" activeColor="transparent" backgroundColor="transparent" class="ribbon" max="360" value="{{hsv.h}}" block-color="{{colorRes}}" bindtouchend="onEnd" />
   </view>
 </view>

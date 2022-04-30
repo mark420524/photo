@@ -66,6 +66,9 @@ Component({
           hueColor: this.hsv2rgb(hue, 100, 100),
           colorRes: this.hsv2rgb(hue, this.data.hsv.s, this.data.hsv.v)
         })
+        this.triggerEvent('changeColor', {
+            color: this.data.colorRes
+        })
       },
       changeSV: function (e) {
         let {
