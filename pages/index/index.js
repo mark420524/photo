@@ -9,7 +9,7 @@ Page({
      searchVal:''
   },
   handlerItemClick(e){
-    let item = e.currentTarget.dataset.category;
+    let item = e.currentTarget.dataset.category || {};
     
     let customer = item.customer || 0 ;
     if (customer) {
@@ -17,11 +17,19 @@ Page({
         url: '/pages/size/index',
       })
     }else{
+      item.customerBackground=0;
       wx.setStorageSync('photoSize', item);
       wx.navigateTo({
         url: '/pages/choose/index',
       })
     }
+  },
+  handlerCustomerBackground(){
+    let item ={customerBackground:1}
+    wx.setStorageSync('photoSize', item);
+    wx.navigateTo({
+      url: '/pages/choose/index',
+    })
   },
   actionSearch( ){
       const keyword = this.selectComponent('#searchText')

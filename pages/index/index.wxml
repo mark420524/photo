@@ -12,6 +12,12 @@
 
 
   <van-grid column-num="2" border="{{ false }}">
+        <van-grid-item use-slot  bind:click="handlerCustomerBackground">
+          <view class="item">                 
+                <view class="name">自定义背景</view>
+                <view class="size">尺寸:原始尺寸</view>
+            </view>
+        </van-grid-item>
         <van-grid-item use-slot wx:for="{{ categoryies }}" wx:key="index" bind:click="handlerItemClick" data-category="{{item}}" wx:for-item="item">
             <view class="item">                 
                 <view class="name">{{item.name}}</view>

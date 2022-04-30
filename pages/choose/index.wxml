@@ -24,7 +24,7 @@
             
         </view>
     </view>
-    <view class="chooseBackground">
+    <view class="chooseBackground" wx:if="{{!size.customerBackground}}">
             <view class="blackColor">
             背景色
                 <view class="background">
@@ -44,10 +44,10 @@
     <view class="footer">
         <view class="operate">
             <view class="" bindtap="chooseImage" data-source-type="album">
-            <van-button  type="primary" color="#8dc63f">
+            <van-button  type="primary"  color="#0081ff">
             
             相册选择</van-button></view>
-            <view class="startTake" bindtap="chooseImage" data-source-type="camera"><van-button  type="primary" color="#0081ff">
+            <view class="startTake" bindtap="chooseImage" data-source-type="camera"><van-button  type="primary">
             
             开始拍摄</van-button></view>
         </view>

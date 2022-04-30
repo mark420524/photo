@@ -3,6 +3,7 @@ Page({
         item:{},
         currentImage:'/static/images/background.png',
         background:'white',
+        showColors:true,
         active:0,
         currentHeight:0,
         currentWidth:0,

@@ -17,7 +17,7 @@
           <van-tab title="原图" name="1"    ></van-tab>
       </van-tabs>
     </view>
-    <view class="operateBack">
+    <view class="operateBack" wx:if="{{showColors}}">
         <view class="color" wx:for="{{colors}}" bindtap="changeBackground"
         data-color="{{item.color}}"
         data-index="{{index}}"
