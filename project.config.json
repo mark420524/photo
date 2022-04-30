@@ -9,7 +9,12 @@
             {
                 "type": "folder",
                 "value": "data"
+            },
+            {
+                "type": "folder",
+                "value": "screenshot"
             }
+            
         ]
     },
     "setting": {

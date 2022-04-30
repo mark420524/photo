@@ -24,7 +24,7 @@ Page({
             {name:'blue1',color:'#438edb'},
             {name:'blue2',color:'#00bff3'},
         ],
-        color:'',
+        color:'white',
         customeStyle:[
             'display:none;',
             'display:none;',
@@ -187,5 +187,13 @@ Page({
           }
           }
         });
-      },
+    },
+    composeBackground(){
+        let color = this.data.color;
+        let item = this.data.item;
+        let sourceImage = item.sourceImage;
+        let filename = sourceImage.split('/')
+        filename = filename[filename.length-1]
+        console.log('compose',color,filename)
+    }
 })

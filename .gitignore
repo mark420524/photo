@@ -20,3 +20,4 @@ bin-release/
 dist/
 node_modules/
 constant.js
+*.png
