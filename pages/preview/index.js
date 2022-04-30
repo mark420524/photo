@@ -129,6 +129,10 @@ Page({
     },
     savePicToAlbum(){
         let currentImage = this.data.currentImage;
+        this.savePicture(currentImage)
+    },
+    savePicture(currentImage){
+        
         let that =  this;
         console.log(currentImage)
         wx.showLoading({
@@ -137,7 +141,6 @@ Page({
         wx.getSetting({
             success(res) {
                 if (res.authSetting['scope.writePhotosAlbum']) {
-
                     //有保存权限
                     wx.downloadFile({
                         url: currentImage,  
