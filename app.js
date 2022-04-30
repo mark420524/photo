@@ -1,6 +1,7 @@
 // app.js
 import util from 'utils/util.js'
 import api from 'api/api.js'
+import CONSTANT from 'utils/constant';
 App({
   onLaunch() {
     // 登录
@@ -14,5 +15,6 @@ App({
     userInfo: null
   },
   utils: util,
-  apis: api
+  apis: api,
+  CONSTANT:CONSTANT
 })

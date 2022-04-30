@@ -28,8 +28,6 @@
         link-type="navigateTo"
     url="/pages/preview/index"
         text="  预览"
-        />
-        
-        
+        /> 
   </van-grid>
 </view>

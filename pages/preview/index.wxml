@@ -11,7 +11,7 @@
         background="{{background}}"
             />
     </view>
-    <view>
+    <view wx:if="{{showTabs}}">
       <van-tabs bindchange="selectType" active="{{ active }}" color="#1989fa" >
           <van-tab title="完成图" name="0"    ></van-tab>
           <van-tab title="原图" name="1"    ></van-tab>

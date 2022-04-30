@@ -1,14 +1,18 @@
+const app = getApp();
 Page({
     data:{
         item:{},
-        currentImage:'/static/images/background.png',
+        currentImage:'',
         background:'white',
-        showColors:true,
+        showColors:false,
+        showTabs:false,
         active:0,
         currentHeight:0,
         currentWidth:0,
         calcWidth:0,
         calcHeight:0,
+        width:0,
+        height:0,
         showScale: 1,
         unit:'px',
         colors:[
@@ -26,22 +30,52 @@ Page({
         ]
     },
     onLoad(){
-        let width = 295;
-        let height = 413;
+        this.initData();
+    },
+    initData(){
+        let item = wx.getStorageSync('previewImage');
+        let targetWidth = item.targetWidth
+        let targetHeight = item.targetHeight;
+        let sourceWidth = item.sourceWidth;
+        let sourceHeight = item.sourceHeight;
+        let currentHeight = targetHeight || sourceHeight
+        let currentWidth = targetWidth || sourceWidth;
+        let showTabs=false;
+        let showColors = false;
+        let imageSrc = '';
+
+        if (targetWidth && targetHeight) {
+            showTabs=true;
+            imageSrc = item.targetImageCut;
+        }else{
+            showColors = true;
+            imageSrc = item.sourceImageNotBack;
+        }
+        imageSrc = this.buildImageSrc(imageSrc)
         this.setData({
-			currentHeight:height+this.data.unit,
-            currentWidth:width+this.data.unit,
+			currentHeight:currentHeight+this.data.unit,
+            currentWidth:currentWidth+this.data.unit,
+            width:currentWidth,
+            height:currentHeight,
             calcWidth:0,
             calcHeight:0, 
-			background:'red'
+            background:'red',
+            showColors:showColors,
+            showTabs:showTabs,
+            currentImage:imageSrc
 		})
     },
+    buildImageSrc(imageSrc){
+        if(imageSrc.indexOf('http')==0){
+            return imageSrc;
+        }else{
+            return app.CONSTANT.imageUrl+imageSrc;
+        }
+    },
     imageOnLoad( ){
-        let width = 295;
-        let height = 413;
         this.setData({
-            calcWidth:width,
-            calcHeight:height
+            calcWidth:this.data.width,
+            calcHeight:this.data.height
         })
     },
     selectType(e){
