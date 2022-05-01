@@ -14,7 +14,7 @@ App({
     }
     wx.cloud.init({
       //set your cloud  env 
-      env: 'cloud1-7go9kh8q711e6fc2	'
+      env: 'cloud1-7go9kh8q711e6fc2'
     })
     
   },
