@@ -21,8 +21,13 @@ const showWxToast =  toastMsg  => {
       duration: 2000
   })
 }
+const getUserId = _ => {
+  let uid = wx.getStorageSync('uid');
+  return uid;
+}
 
 module.exports = {
   formatTime,
-  showWxToast
+  showWxToast,
+  getUserId
 }
