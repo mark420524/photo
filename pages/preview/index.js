@@ -191,19 +191,33 @@ Page({
         });
     },
     composeBackground(){
+        wx.showLoading({
+          title: '合成图片中',
+        })
+        let that = this;
         let color = this.data.color;
         let item = this.data.item;
         let sourceImage = item.sourceImage;
         let filename = sourceImage.split('/')
         filename = filename[filename.length-1]
-        console.log('compose',color,filename)
+        let data = {
+            sourceImage: filename,
+            color:color
+        }
+        apis.imageCompose(data).then(res=>{
+            //console.log(res)
+            let imageSrc = res.imageSrc
+            that.savePicToAlbum(imageSrc)
+            wx.hideLoading()
+        })
+        
     },
     moreColor () {
         this.setData({
-          pick: true
+            pick: true
         })
-      },
-      pickColor(e) {
+    },
+    pickColor(e) {
         let customeStyle=[];
         for (let i=0;i<this.data.colors.length;i++){
             customeStyle[i]='display:none;';
@@ -213,5 +227,5 @@ Page({
             color:e.detail.color,
             background:e.detail.color
         })
-      },
+    },
 })

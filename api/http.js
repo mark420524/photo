@@ -10,7 +10,7 @@ const http = (params) => {
       url:  params.url,//服务器url+参数中携带的接口具体地址
       data: params.data,//请求参数
       header: params.header || {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/x-www-form-urlencoded",
         "X-token-api":CONSTANT.TOKEN,
         "X-token-user":wx.getStorageSync('userToken')
       },

@@ -6,7 +6,8 @@ import {
   const imageUrl = CONSTANT.imageUrl;
   var url = {
     userLogin: apiUrl+ "v2/user/login",
-    imageUpload: imageUrl + "upload"
+    imageUpload: imageUrl + "upload",
+    imageCompose: imageUrl + "compose"
   }
   module.exports = {
     userLogin(data) {
@@ -28,6 +29,13 @@ import {
         name:fileName,
         filePath:filePath,
         method:'POST'
+      })
+    },
+    imageCompose(data){
+      return http({
+        url: url.imageCompose,
+        data: data,
+        method: 'POST'
       })
     }
   }
