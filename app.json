@@ -7,7 +7,8 @@
     "pages/size/index",
     "pages/my/index",
     "pages/about/index",
-    "pages/help/index"
+    "pages/help/index",
+    "pages/other/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

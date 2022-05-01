@@ -64,6 +64,11 @@ Page({
                 url: '/pages/help/index'
               })
         },
+        otherTool(){
+            wx.navigateTo({
+                url: '/pages/other/index'
+            })
+        },
         getUserId(){
             let uid = wx.getStorageSync('uid');
             return uid;

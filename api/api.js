@@ -6,7 +6,7 @@ import {
   const imageUrl = CONSTANT.imageUrl;
   var url = {
     userLogin: apiUrl+ "v2/user/login",
-    updateUser:'user/updateUser',
+    updateUser: apiUrl+'user/updateUser',
     imageUpload: imageUrl + "upload",
     imageCompose: imageUrl + "compose"
   }

@@ -11,7 +11,7 @@ Page({
             pagePath: "/pages/index/index",
             iconPath: "home-o",
             selectedIconPath: "home-o",
-            text: "尺寸"
+            text: "首页"
           },
           
           {
