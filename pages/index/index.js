@@ -1,13 +1,33 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-
+const db = wx.cloud.database();
 Page({
   data: {
     customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
      categoryies:[ 
-     {"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"blue","name":"一寸（蓝底）","_id":1,"sort":1,"status":1,"customer":0}],
+     ],
      searchVal:''
+  },
+  onLoad(){
+    this.initData()
+  },
+  initData(){
+    let that = this;
+    db.collection('photo_size_list')
+      .orderBy('sort', 'asc')
+      .where({
+        status:1
+      })
+      .get({
+        success: function(res) {
+          console.log(res.data)
+          that.setData({ 
+            categoryies:res.data,
+          })
+        }
+      }
+      );
   },
   handlerItemClick(e){
     let item = e.currentTarget.dataset.category || {};
@@ -40,6 +60,9 @@ Page({
   onCofirmSearch(e){
       let val = e.detail;
       this.search(val);
+  },
+  search(val){
+
   },
   onShow(){ 
     if (typeof this.getTabBar === 'function' &&

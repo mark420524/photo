@@ -1,8 +1,27 @@
 
 Page({
     data:{
-      toolsItems:[{"text":"早晚券","path":"/pages/index/index","appId":"wx7cd1c3802bbb34fa" ,"iconColor":"red","icon":"coupon-o","status":1,"sort":1,"_id":1},
-      {"text":"早晚答","path":"/pages/index/index","appId":"wx09293d6036709520" ,"iconColor":"green","icon":"checked","status":1,"sort":2,"_id":2}]
+      toolsItems:[]
+    },
+    onLoad(){
+      this.initData();
+    },
+    initData(){
+      let that = this;
+      db.collection('tools_list')
+        .orderBy('sort', 'asc')
+        .where({
+          status:1
+        })
+        .get({
+          success: function(res) {
+            console.log(res.data)
+            that.setData({ 
+              toolsItems:res.data,
+            })
+          }
+        }
+        );
     },
     handlerItemClick(e){
       let dataset = e.currentTarget.dataset;
