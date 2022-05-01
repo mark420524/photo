@@ -18,6 +18,12 @@
                 <view class="size">尺寸:原始尺寸</view>
             </view>
         </van-grid-item>
+        <van-grid-item use-slot  bind:click="handlerItemClick" data-category="{{customerSize}}">
+          <view class="item">                 
+                <view class="name">{{customerSize.name}}</view>
+                <view class="size">尺寸:{{ customerSize.mmWidth}}x{{customerSize.mmHeight}} mm</view>
+            </view>
+        </van-grid-item>
         <van-grid-item use-slot wx:for="{{ categoryies }}" wx:key="index" bind:click="handlerItemClick" data-category="{{item}}" wx:for-item="item">
             <view class="item">                 
                 <view class="name">{{item.name}}</view>

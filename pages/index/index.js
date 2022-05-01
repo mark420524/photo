@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-     categoryies:[ {"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
+    customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
+     categoryies:[ 
      {"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"blue","name":"一寸（蓝底）","_id":1,"sort":1,"status":1,"customer":0}],
      searchVal:''
   },
