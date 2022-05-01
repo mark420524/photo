@@ -2,6 +2,7 @@
 // 获取应用实例
 const app = getApp()
 const utils = app.utils;
+const db = wx.cloud.database();
 Page({
   data: {
     customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
@@ -24,12 +25,14 @@ Page({
       status:1,
     }
     if (val){
-      let valre = new RegExp('^'+val);
-      params.name = valre;
+      params.name = db.RegExp({
+        regexp: val,
+        options: 'i',
+      })
     }
-    console.log(params)
+    
     let data = {
-      dbname:'',
+      dbname:'photo_size_list',
       params:params,
       sort:'sort',
       rule:'asc'
@@ -40,18 +43,18 @@ Page({
     }).then(res=>{
         console.log(res)
         let result = res.result;
-        if (result.code===0 && result.data.length>0) {
+        wx.hideLoading()
+        if (result.data  && result.data.length>0) {
             that.setData({
               categoryies:result.data
             })
         }else{
             utils.showWxToast('查无数据');
         }
-        wx.hideLoading()
+        
       }).catch(err=>{
           wx.hideLoading()
           utils.showWxToast('查无数据');
-          
       });
     
   },

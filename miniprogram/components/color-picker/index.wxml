@@ -9,7 +9,7 @@
       </view>
       <view class="weui-half-screen-dialog__hd__main">
         <strong class="weui-half-screen-dialog__title">请选择颜色</strong>
-        <view class="weui-half-screen-dialog__subtitle">可通过下方滑块颜色预览</view>
+        <view class="weui-half-screen-dialog__subtitle">可拖动下方滑块颜色预览</view>
       </view>
     </view>
     <movable-area class="target" style="background-color:{{hueColor}}">

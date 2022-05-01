@@ -12,17 +12,7 @@ exports.main = async (event, context) => {
     let order = event.order || 'asc';
     let sort = event.sort || '_id';
     
-    return   new Promise((resolve, reject) => {
-        db.collection(dbname).orderBy(sort,order)
-        .where(params).get({
-            success: function(res){
-                if (res.data && res.data.length>0) {
-                    resolve(res.data)
-                }else{
-                    reject('数据为空')
-                }
-            },
-            
-        })
-    });
+    return   db.collection(dbname).orderBy(sort,order)
+        .where(params).get()
+     
 }
