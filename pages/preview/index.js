@@ -147,9 +147,17 @@ Page({
                     wx.downloadFile({
                         url: currentImage,  
                         success (res) {
-                             
                             if (res.statusCode === 200) {
                                 console.log(res.tempFilePath)
+                                wx.saveImageToPhotosAlbum({
+                                    filePath: img,
+                                    success: (result) => {
+                                        utils.showWxToast('保存成功')
+                                    },
+                                    fail:(res)=>{
+                                        utils.showWxToast('保存相册失败，请检查权限')
+                                    }
+                                })
                             } else {
                                 utils.showWxToast('下载图像异常')
                             }

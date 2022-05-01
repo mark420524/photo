@@ -34,13 +34,13 @@ Page({
           success:function(res) {
             if (res.authSetting['scope.camera']) {
               //已经授权打开摄像头
-              that.goToCamera();
+              that.choosePicture(sourceType); 
             }else{
               //去授权页面
               wx.authorize({
                 scope: 'scope.camera',
                 success () {
-                  that.goToCamera();
+                  that.choosePicture(sourceType); 
                 },
                 fail(){
                   that.openAuthCamera()	
@@ -57,47 +57,49 @@ Page({
         });
       }else {
         wx.hideLoading( )
-        wx.chooseMedia({
-          count: 1,
-          sizeType: ['original', 'compressed'],
-          mediaType: ['image'],
-          sourceType: [sourceType],
-          success(res) {
-            let file_path = res.tempFiles[0].tempFilePath;
-            if (file_path === null || file_path === undefined) {
-              utils.showWxToast(  '选择文件异常…' )
-              return
+        this.choosePicture(sourceType);
+      }
+    },
+    choosePicture(sourceType){
+      let that = this;
+      wx.chooseMedia({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        mediaType: ['image'],
+        sourceType: [sourceType],
+        success(res) {
+          let file_path = res.tempFiles[0].tempFilePath;
+          if (file_path === null || file_path === undefined) {
+            utils.showWxToast(  '选择文件异常…' )
+            return
+          }
+          
+          wx.showLoading({ title: '上传中,请稍等…' })
+          let color = that.data.color || '';
+          let width = that.data.size.pxWidth || '';
+          let height = that.data.size.pxHeight||'';
+          let data= {
+            filePath:file_path,
+            color: color,
+            width: width,
+            height:height
+          }
+          console.log(data)
+          apis.imageUpload(data).then(res=>{
+            wx.hideLoading();
+            console.log(res)
+            if(res){
+              wx.setStorageSync('previewImage', res)
+              wx.navigateTo({
+                url: '/pages/preview/index',
+              })
+            }else{
+              utils.showWxToast('上传异常，请稍候重试')
             }
             
-            wx.showLoading({ title: '上传中,请稍等…' })
-            let color = that.data.color || '';
-            let width = that.data.size.pxWidth || '';
-            let height = that.data.size.pxHeight||'';
-            let data= {
-              filePath:file_path,
-              color: color,
-              width: width,
-              height:height
-            }
-            console.log(data)
-            apis.imageUpload(data).then(res=>{
-              wx.hideLoading();
-              console.log(res)
-              if(res){
-                wx.setStorageSync('previewImage', res)
-                wx.navigateTo({
-                  url: '/pages/preview/index',
-                })
-              }else{
-                utils.showWxToast('上传异常，请稍候重试')
-              }
-              
-            })
-          },
-        })
-      }
-      
-       
+          })
+        },
+      })
     },
     openAuthCamera(){
       wx.showModal({
@@ -117,8 +119,4 @@ Page({
         }
       });
     },
-    goToCamera(){
-      console.log('goto camera')
-    }
-     
 })
