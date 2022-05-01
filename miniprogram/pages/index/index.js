@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-const db = wx.cloud.database();
+const utils = app.utils;
 Page({
   data: {
     customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
@@ -13,21 +13,47 @@ Page({
     this.initData()
   },
   initData(){
+    this.search();
+  },
+  search(val){
     let that = this;
-    db.collection('photo_size_list')
-      .orderBy('sort', 'asc')
-      .where({
-        status:1
-      })
-      .get({
-        success: function(res) {
-          console.log(res.data)
-          that.setData({ 
-            categoryies:res.data,
-          })
+    wx.showLoading({
+      title: '查询数据中',
+    })
+    let params = {
+      status:1,
+    }
+    if (val){
+      let valre = new RegExp('^'+val);
+      params.name = valre;
+    }
+    console.log(params)
+    let data = {
+      dbname:'',
+      params:params,
+      sort:'sort',
+      rule:'asc'
+    }
+    wx.cloud.callFunction({
+      name: "querydata",
+      data:data
+    }).then(res=>{
+        console.log(res)
+        let result = res.result;
+        if (result.code===0 && result.data.length>0) {
+            that.setData({
+              categoryies:result.data
+            })
+        }else{
+            utils.showWxToast('查无数据');
         }
-      }
-      );
+        wx.hideLoading()
+      }).catch(err=>{
+          wx.hideLoading()
+          utils.showWxToast('查无数据');
+          
+      });
+    
   },
   handlerItemClick(e){
     let item = e.currentTarget.dataset.category || {};
@@ -55,14 +81,16 @@ Page({
   actionSearch( ){
       const keyword = this.selectComponent('#searchText')
       let val = keyword.data.value;
-      this.search(val);
+      if (val) {
+        this.search(val);
+      }
+      
   },
   onCofirmSearch(e){
       let val = e.detail;
-      this.search(val);
-  },
-  search(val){
-
+      if (val) {
+        this.search(val);
+      }
   },
   onShow(){ 
     if (typeof this.getTabBar === 'function' &&
