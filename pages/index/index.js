@@ -41,4 +41,12 @@ Page({
       let val = e.detail;
       this.search(val);
   },
+  onShow(){ 
+    if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          active: 0,
+        })
+      }
+  }
 })

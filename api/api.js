@@ -6,6 +6,7 @@ import {
   const imageUrl = CONSTANT.imageUrl;
   var url = {
     userLogin: apiUrl+ "v2/user/login",
+    updateUser:'user/updateUser',
     imageUpload: imageUrl + "upload",
     imageCompose: imageUrl + "compose"
   }
@@ -17,6 +18,12 @@ import {
         url: url.userLogin+'/'+appId,
         data: data,
         method: 'POST'
+      })
+    },
+    updateUser:function(data){
+      return http({
+        url:url.updateUser,
+        data:data
       })
     },
     imageUpload(data){
