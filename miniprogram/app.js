@@ -30,17 +30,9 @@ App({
     wx.login({
         success (res) {
             //console.log(res)
-            let data={ 
-              code:res.code,
-              appId:appId
-            }
-            if(res.code){
-                api.userLogin(data).then(res=>{
-                  wx.hideLoading();
-                  wx.setStorageSync('uid', res.userId)
-                  wx.setStorageSync('userToken', res.token)
-                });
-            }
+            
+            wx.setStorageSync('uid', 1)
+            
         },
         fail(res) {
           wx.hideLoading();

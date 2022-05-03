@@ -11,8 +11,6 @@ const http = (params) => {
       data: params.data,//请求参数
       header: params.header || {
         "Content-Type": "application/x-www-form-urlencoded",
-        "X-token-api":CONSTANT.TOKEN,
-        "X-token-user":wx.getStorageSync('userToken')
       },
       method: params.method || 'POST',//默认为POST,可以不写，如常用请求格式为POST，可以设置POST为默认请求方式
       dataType: params.dataType,//返回的数据格式,默认为JSON，特殊格式可以在调用的时候传入参数
@@ -54,8 +52,6 @@ const uploadFile = (params) => {
       name: params.name,
       header: params.header || {
         "Content-Type": "multipart/form-data",
-        "X-token-api":CONSTANT.TOKEN,
-        "X-token-user":wx.getStorageSync('userToken')
       },
       method: 'POST',//默认为POST,可以不写，如常用请求格式为POST，可以设置POST为默认请求方式
       dataType: params.dataType,//返回的数据格式,默认为JSON，特殊格式可以在调用的时候传入参数

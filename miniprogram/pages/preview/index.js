@@ -49,6 +49,7 @@ Page({
         let showColors = false;
         let imageSrc = '';
         let savePic = false;
+        let imageDomain = item.imageDomain;
         if (targetWidth && targetHeight) {
             showTabs=true;
             imageSrc = item.targetImageCut;
@@ -57,7 +58,7 @@ Page({
             showColors = true;
             imageSrc = item.sourceImageNotBack;
         }
-        imageSrc = this.buildImageSrc(imageSrc)
+        imageSrc = this.buildImageSrc(imageSrc, imageDomain)
         this.setData({
 			currentHeight:currentHeight+this.data.unit,
             currentWidth:currentWidth+this.data.unit,
@@ -73,11 +74,11 @@ Page({
             savePic:savePic
 		})
     },
-    buildImageSrc(imageSrc){
+    buildImageSrc(imageSrc, imageDomain){
         if(imageSrc.indexOf('http')==0){
             return imageSrc;
         }else{
-            return app.CONSTANT.imageUrl+imageSrc;
+            return imageDomain+imageSrc;
         }
     },
     imageOnLoad( ){
@@ -93,6 +94,7 @@ Page({
         let currentHeight = '';
         let currentWidth = '';
         let imageSrc = '';
+        let imageDomain = item.imageDomain;
         if (index==0) {
             //完成图
             currentHeight = item.targetHeight;
@@ -104,7 +106,7 @@ Page({
             currentWidth = item.sourceWidth;
             imageSrc = item.sourceImage
         }
-        imageSrc = this.buildImageSrc(imageSrc)
+        imageSrc = this.buildImageSrc(imageSrc, imageDomain)
         this.setData({
             background:'white',
 			currentHeight:currentHeight+this.data.unit,

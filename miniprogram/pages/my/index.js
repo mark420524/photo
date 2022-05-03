@@ -16,15 +16,7 @@ Page({
                             userInfo: userInfo
                         })
                         wx.setStorageSync("userInfo",userInfo)
-                        userInfo.uid = _this.getUserId();
-                        apis.updateUser(userInfo).then(res=>{
-                            //console.log('updateUser', res);
-                            if (res) {
-                                utils.showWxToast(  '授权成功' );
-                            }else{
-                                utils.showWxToast(  '授权失败，请去联系管理员' );
-                            }
-                        });
+                        
                         
                     },
                     fail: res => {

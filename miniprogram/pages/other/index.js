@@ -16,7 +16,7 @@ Page({
         })
         .get({
           success: function(res) {
-            console.log(res.data)
+            //console.log(res.data)
             that.setData({ 
               toolsItems:res.data,
             })
