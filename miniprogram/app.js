@@ -6,16 +6,17 @@ let appId = wx.getAccountInfoSync().miniProgram.appId;
 App({
   onLaunch() {
     // 登录
+   
+    wx.cloud.init({
+      //set your cloud  env 
+      env: 'cloud1-7go9kh8q711e6fc2'
+    })
     let uid = util.getUserId();
     if (uid) {
         console.log('用户已登录，要不要读取用户头像呢');
     }else{
         this.initUserId();
     }
-    wx.cloud.init({
-      //set your cloud  env 
-      env: 'cloud1-7go9kh8q711e6fc2'
-    })
     
   },
   globalData: {
@@ -27,18 +28,18 @@ App({
     'title': '正在初始化，请稍候...',
     'mask': true
     });
-    wx.login({
-        success (res) {
-            //console.log(res)
-            
-            wx.setStorageSync('uid', 1)
-            
-        },
-        fail(res) {
-          wx.hideLoading();
-          //console.log(res)
-        }
-    });
+    wx.cloud.callFunction({
+			name: 'adduser',
+			success: res=>{
+          wx.setStorageSync('uid', 1)
+      },
+			fail:err=> {
+				 
+      },
+      complete: () => {
+        wx.hideLoading( )
+      }
+		})
   },
   utils: util,
   apis: api,
