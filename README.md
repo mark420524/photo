@@ -19,7 +19,7 @@ gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
 
 > 小程序页面：微信小程序基础组件，vant开源组件
 
-> 后端接口：java 开发，mysql数据库、部分数据使用云开发数据库，图片处理程序为python
+> 后端接口：部分数据使用云开发数据库，图片处理程序为python
 
 #### 待完成
 
@@ -27,8 +27,7 @@ gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
 
 #### 代码运行
 
-1. 将`utils/constant.js.example` 重命名为`constant.js`
-2. `constant.js`里面配置后台接口地址和请求接口的`token`
+1. 后台项目暂未开源，开发完成后会逐步开源
 
 #### 扫码添加QQ群讨论
 
