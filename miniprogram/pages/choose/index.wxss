@@ -1,13 +1,23 @@
+.guide{
+    padding: 30rpx;
+}
+.item{
+    margin-top: 20rpx;
+    font-size: 26rpx;
+}
+.title{
+    font-weight: bold;
+    font-size: 38rpx;
+}
 .tips{
     padding: 30rpx;
     border-radius: 10rpx;
+    margin-top: 30rpx;
 }
 .tipsDetail{
     margin-top: 40rpx;
 }
-.sizeName{
-    font-size: 30rpx;
-}
+
 .tipsItem{
     display: flex;
     justify-content: space-between;

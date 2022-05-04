@@ -28,6 +28,7 @@ gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
 #### 代码运行
 
 1. 后台项目暂未开源，开发完成后会逐步开源
+1. `utils/constant.js` 里面配置上传文件的域名
 
 #### 扫码添加QQ群讨论
 

@@ -13,7 +13,7 @@ App({
     })
     let uid = util.getUserId();
     if (uid) {
-        console.log('用户已登录，要不要读取用户头像呢');
+        
     }else{
         this.initUserId();
     }

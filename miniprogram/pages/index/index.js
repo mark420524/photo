@@ -75,7 +75,7 @@ Page({
     }
   },
   handlerCustomerBackground(){
-    let item ={customerBackground:1}
+    let item ={customerBackground:1,name:'自定义背景'}
     wx.setStorageSync('photoSize', item);
     wx.navigateTo({
       url: '/pages/choose/index',
