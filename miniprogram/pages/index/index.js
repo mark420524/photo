@@ -41,7 +41,7 @@ Page({
       name: "querydata",
       data:data
     }).then(res=>{
-        console.log(res)
+        //console.log(res)
         let result = res.result;
         wx.hideLoading()
         if (result.data  && result.data.length>0) {
