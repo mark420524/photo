@@ -23,12 +23,16 @@ gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
 
 #### 待完成
 
-
+1. 整体功能性测试及审核上线
 
 #### 代码运行
 
 1. 后台项目暂未开源，开发完成后会逐步开源
 1. `utils/constant.js` 里面配置上传文件的域名
+
+#### 后台代码
+
+github地址: [https://github.com/mark420524/aiphoto](https://github.com/mark420524/aiphoto)
 
 #### 扫码添加QQ群讨论
 
