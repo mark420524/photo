@@ -42,3 +42,8 @@ gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
 
 #### 页面截图
 
+![image](screenshot/5.png)
+![image](screenshot/6.png)
+![image](screenshot/7.png)
+![image](screenshot/8.png)
+![image](screenshot/9.png)
