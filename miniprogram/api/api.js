@@ -1,5 +1,5 @@
 import {
-    http,uploadFile
+    http,uploadFile,callfunction
   } from 'http.js'
   import CONSTANT from '../utils/constant';
   const imageUrl = CONSTANT.imageUrl;
@@ -26,5 +26,8 @@ import {
         data: data,
         method: 'POST'
       })
+    },
+    callfunction:function(data){
+      return callfunction(data)
     }
   }

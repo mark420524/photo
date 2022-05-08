@@ -1,8 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-const utils = app.utils;
-const db = wx.cloud.database();
+const apis = app.apis;
 Page({
   data: {
     customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
@@ -35,28 +34,15 @@ Page({
       dbname:'photo_size_list',
       params:params,
       sort:'sort',
-      rule:'asc'
+      rule:'asc',
+      functionName:'querydata'
     }
-    wx.cloud.callFunction({
-      name: "querydata",
-      data:data
-    }).then(res=>{
-        //console.log(res)
-        let result = res.result;
-        wx.hideLoading()
-        if (result.data  && result.data.length>0) {
-            that.setData({
-              categoryies:result.data
-            })
-        }else{
-            utils.showWxToast('查无数据');
-        }
-        
-      }).catch(err=>{
-          wx.hideLoading()
-          utils.showWxToast('查无数据');
-      });
-    
+    apis.callfunction(data).then(res=>{
+      wx.hideLoading( )
+      that.setData({
+        categoryies:res 
+      })
+    }) 
   },
   handlerItemClick(e){
     let item = e.currentTarget.dataset.category || {};

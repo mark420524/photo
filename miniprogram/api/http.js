@@ -84,6 +84,26 @@ const uploadFile = (params) => {
     })
   })
 }
+
+const callfunction=(params)=>{
+  return new Promise((resolve, reject) => {
+    wx.cloud.callFunction({
+      name: params.functionName,
+      data: params
+    }).then(res=>{
+        //console.log(res)
+      let result = res.result;
+      if (result.data  && result.data.length>0) {
+        resolve(result.data)
+      }else{
+        errorToast('查无数据');
+      }
+    }).catch(err=>{
+      errorToast('查无数据');
+      reject(err)
+    });
+  })
+}
 function errorToast(message){
   wx.showToast({
     title:  message ,
@@ -92,5 +112,6 @@ function errorToast(message){
 }
 module.exports = {
   http: http,
-  uploadFile:uploadFile
+  uploadFile:uploadFile,
+  callfunction:callfunction
 }
