@@ -30,5 +30,6 @@
                 <view class="size">尺寸:{{ item.mmWidth}}x{{item.mmHeight}} mm</view>
             </view>
         </van-grid-item>
+        <van-grid-item></van-grid-item>
   </van-grid>
 </view>

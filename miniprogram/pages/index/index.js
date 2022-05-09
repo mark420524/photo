@@ -2,6 +2,7 @@
 // 获取应用实例
 const app = getApp()
 const apis = app.apis;
+const db = wx.cloud.database();
 Page({
   data: {
     customerSize:{"pxHeight":413,"mmHeight":35,"pxWidth":295,"mmWidth":25,"color":"","name":"自定义尺寸","_id":0,"sort":0,"status":1,"customer":1},
