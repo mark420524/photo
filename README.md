@@ -8,8 +8,6 @@ AI 换底色，根据尺寸更换背景，生成证件照
 
 交流 qq群：123955944
 
-gitee地址 [https://gitee.com/siival/photo](https://gitee.com/siival/photo)
-
 
 #### 扫码预览(暂未上线无法预览)
 
