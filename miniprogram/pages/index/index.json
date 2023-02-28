@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"早晚照",
+  "usingComponents": {
+      "van-grid": "../../components/vant/grid/index",
+      "van-grid-item": "../../components/vant/grid-item/index",
+      "van-search": "../../components/vant/search/index"
+  }
+}

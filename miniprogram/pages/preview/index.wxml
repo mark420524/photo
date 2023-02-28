@@ -1,0 +1,43 @@
+<view class="main">
+    <view class="previewImage">
+      <preview  
+        current-height="{{currentHeight}}" 
+        image-src="{{currentImage}}" 
+        current-width="{{currentWidth}}"
+        calc-width="{{calcWidth}}"
+        calc-height="{{calcHeight}}"
+        unit="{{unit}}"
+        bind:imageonload="imageOnLoad"
+        background="{{background}}"
+            />
+    </view>
+    <view wx:if="{{showTabs}}">
+      <van-tabs bindchange="selectType" active="{{ active }}" color="#1989fa" >
+          <van-tab title="完成图" name="0"    ></van-tab>
+          <van-tab title="原图" name="1"    ></van-tab>
+      </van-tabs>
+    </view>
+    <view class="operateBack" wx:if="{{showColors}}">
+        <view class="color" wx:for="{{colors}}" bindtap="changeBackground"
+        data-color="{{item.color}}"
+        data-index="{{index}}"
+        wx:for-item="item" wx:key="index" style="background-color: {{item.color}};">
+        <van-icon name="success" size="60rpx" color="#cbe6db" custom-style="{{customeStyle[index]}}"/>
+        </view>
+         <view bindtap="moreColor" class="color">
+         <view class="more">更多</view>
+         </view>
+    </view>
+    <view class="operateInfo">
+      <view wx:if="{{savePic}}">
+        <van-button  bind:click="savePicToAlbum" size="large" type="primary">保存电子照
+        </van-button>
+      </view>
+      <view wx:else>
+        <van-button   bind:click="composeBackground" size="large" type="primary">合成并保存
+        </van-button>
+      </view>
+    </view>
+</view>
+
+<color-picker bindchangeColor="pickColor"  show="{{pick}}" />

@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="main">
+  <van-search value="{{ searchVal }}" placeholder="请输入名称" 
+    id="searchText"
+    label="尺寸"
+    use-action-slot
+    bind:search="onCofirmSearch"
+    
+    background="#ffffff"
+  ><view slot="action" bind:tap="actionSearch">搜索</view>
+  </van-search>
+
+
+  <van-grid column-num="2" border="{{ false }}">
+        <van-grid-item use-slot  bind:click="handlerCustomerBackground">
+          <view class="item">                 
+                <view class="name">自定义背景</view>
+                <view class="size">尺寸:原始尺寸</view>
+            </view>
+        </van-grid-item>
+        <van-grid-item use-slot  bind:click="handlerItemClick" data-category="{{customerSize}}">
+          <view class="item">                 
+                <view class="name">{{customerSize.name}}</view>
+                <view class="size">尺寸:{{ customerSize.mmWidth}}x{{customerSize.mmHeight}} mm</view>
+            </view>
+        </van-grid-item>
+        <van-grid-item use-slot wx:for="{{ categoryies }}" wx:key="index" bind:click="handlerItemClick" data-category="{{item}}" wx:for-item="item">
+            <view class="item">                 
+                <view class="name">{{item.name}}</view>
+                <view class="size">尺寸:{{ item.mmWidth}}x{{item.mmHeight}} mm</view>
+            </view>
+        </van-grid-item>
+        <van-grid-item></van-grid-item>
+  </van-grid>
+</view>

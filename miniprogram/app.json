@@ -1,0 +1,35 @@
+{
+  "pages":[
+    
+    "pages/index/index",
+    "pages/choose/index",
+    "pages/preview/index",
+    "pages/size/index",
+    "pages/my/index",
+    "pages/about/index",
+    "pages/help/index",
+    "pages/other/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "早晚照",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "custom": true,
+    "list":[
+      {
+        "text": "尺寸",
+        "pagePath": "pages/index/index" 
+         
+      },
+      {
+        "text":"我的",
+        "pagePath":"pages/my/index" 
+         
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

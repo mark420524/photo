@@ -1,0 +1,69 @@
+.custom-size-photo {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    font-size: 28rpx;
+}
+
+.custom-size-photo .form {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    padding: 0 40rpx;
+    background: #fff;
+}
+
+.custom-size-photo .form .form-item-wrap {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 40rpx auto 40rpx;
+}
+
+.custom-size-photo .form .symbol {
+    margin: 20rpx;
+}
+
+.custom-size-photo .form .form-item-input {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.custom-size-photo .form .form-item-input ._label {
+    color: #666;
+}
+
+.custom-size-photo .form .form-item-input label {
+    color: #666;
+}
+
+.custom-size-photo .form ._input {
+    flex: 1;
+    border: none;
+    outline: none;
+}
+
+.custom-size-photo .form input {
+    flex: 1;
+    border: none;
+    outline: none;
+}
+
+.initWidth{
+    width:237px;
+}
+.initHeight{
+    width:172px;
+}
+.custom-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2rpx solid #1989fa;
+    border-radius: 6rpx;
+    width: 260rpx;
+    height: 80rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}

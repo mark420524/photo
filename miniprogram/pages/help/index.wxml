@@ -1,0 +1,5 @@
+<van-collapse accordion value="{{ activeName }}" bind:change="onChange">
+  <van-collapse-item title="照片拍照" name="1">
+    证件照更换背景色，选择相应的尺寸，然后上传图片
+  </van-collapse-item>
+</van-collapse>

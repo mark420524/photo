@@ -1,0 +1,41 @@
+<view class="">
+        <view class="custom-size-photo">
+            <preview  
+        current-height="{{currentHeight}}" 
+        image-src="{{imageSrc}}" 
+        current-width="{{currentWidth}}"
+        calc-width="{{calcWidth}}"
+        calc-height="{{calcHeight}}"
+        unit="{{unit}}"
+        bind:imageonload="imageOnLoad"
+            />
+            <view class="form">
+                <van-tabs bindchange="clickUnit" active="{{selectedUnit}}" color="#1989fa" >
+                    <van-tab title="{{unit.label}}" name=""   wx:for="{{units}}" wx:for-item="unit" wx:key="index"></van-tab>
+                </van-tabs>
+                <view class="form-item-wrap">
+                    <view class="form-item-input">
+                        <view class="custom-input">
+                            <input bindinput="inputWidth" class="_input"    max="200" min="10" placeholder="{{currentFormOptions.minWidth}}-{{currentFormOptions.maxWidth}}" type="number"
+                            
+                            ></input>
+                            <label class="_span">{{units[selectedUnit].value}}</label>
+                        </view>
+                        <label class="_label">宽度</label>
+                    </view>
+                    <view class="symbol">X</view>
+                    <view class="form-item-input">
+                        <view class="custom-input">
+                            <input bindinput="inputHeight" class="_input"   max="200" min="10" placeholder="{{currentFormOptions.minHeight}}-{{currentFormOptions.maxHeight}}" type="number" 
+                            
+                            ></input>
+                            <label class="_span">{{units[selectedUnit].value}}</label>
+                        </view>
+                        <label class="_label">高度</label>
+                    </view>
+                </view>
+                <van-button disabled="{{disabled}}" bind:click="gotoChooseImage" size="large" type="primary">下一步
+                </van-button>
+            </view>
+        </view>
+    </view>

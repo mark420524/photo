@@ -1,0 +1,110 @@
+ .mmBlock {
+    width: 100mm;
+    height: 0;
+}
+
+ .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 800rpx;
+    background-color: var(--background);
+}
+
+ .image-wrap {
+    position: relative;
+    max-width: 600rpx;
+    max-height: 600rpx;
+    background-color: #fff;
+    padding: 10rpx;
+    box-sizing: border-box;
+    transition: all 300ms ease-in-out;
+    box-shadow: 4rpx 4rpx 10rpx #999;
+    will-change: width;
+    font-size: 24rpx;
+}
+
+ .height-control {
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: top left;
+    left: -20rpx;
+    top: 0;
+    margin-right: 20rpx;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 600rpx;
+    transition: all 300ms ease-in-out;
+    border-left: 2rpx solid #999;
+    border-right: 2rpx solid #999;
+    will-change: width;
+}
+
+ .height-control ._span {
+    position: relative;
+    background-color: #eee;
+    z-index: 1;
+}
+
+ .height-control::before {
+    content: '';
+    width: 100%;
+    height: 2rpx;
+    background-color: #999;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+ .width-control {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 20rpx;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 600rpx;
+    transition: all 300ms ease-in-out;
+    border-left: 2rpx solid #999;
+    border-right: 2rpx solid #999;
+    will-change: width;
+}
+
+ .width-control ._span {
+    position: relative;
+    background-color: #eee;
+    z-index: 1;
+}
+
+
+ .width-control::before {
+    content: '';
+    width: 100%;
+    height: 2rpx;
+    background-color: #999;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+ .imageWrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 580rpx;
+    transition: all 300ms ease-in-out;
+    will-change: width height;
+}
+
+ .imageWrap ._image {
+    position: absolute;
+    bottom: 0;
+    will-change: width height;
+    transition: all 300ms ease-in-out;
+}

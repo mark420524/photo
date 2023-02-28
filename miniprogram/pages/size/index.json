@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "自定义尺寸照",
+    "usingComponents": {
+        "van-button": "../../components/vant/button/index",
+        "van-tab": "../../components/vant/tab/index",
+        "van-tabs": "../../components/vant/tabs/index",
+        "preview": "../../components/preview/index"
+    }
+}

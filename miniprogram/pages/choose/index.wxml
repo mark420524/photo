@@ -1,0 +1,67 @@
+<view class="">
+    <view class="main guide">
+      <view class="title">拍照建议</view>
+      <view class="item">
+        1. 站在白色或灰色背景下，穿与背景色相差较大的衣服
+      </view>
+      <view class="item">
+        2. 建议使用后置摄像头进行拍摄
+      </view>
+      <view class="item">
+        3. 头部居中，露出眉毛和耳朵，不带眼镜
+      </view>
+      <view class="item">
+        4. 正对镜头，光线充足，保证脸部无反光
+      </view>
+    </view>
+    <view class="main tips">
+        <view class="title">{{size.name}}</view>
+        <view class="tipsDetail" >
+            <view class="tipsItem">
+                <text class="blackColor">像素大小</text>
+                <text  class="grayColor">{{size.pxWidth}}x{{size.pxHeight}}px</text>
+            </view>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">照片尺寸</text>
+                <text  class="grayColor">{{size.mmWidth}}x{{size.mmHeight}}mm</text>
+            </view>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">文件大小</text>
+                <text  class="grayColor">无限制</text>
+            </view>
+            <view class="tipsItem paddingTop">
+                <text class="blackColor">照片格式</text>
+                <text class="grayColor">jpg</text>
+            </view>
+            
+        </view>
+    </view>
+    <view class="main chooseBackground" wx:if="{{!size.customerBackground}}">
+            <view class="blackColor">
+            背景色
+                <view class="background">
+                    <van-radio-group
+                        value="{{ color }}"
+                        bind:change="onChangeColor"
+                        direction="horizontal"
+                        >
+                        <van-radio name="red">红底</van-radio>
+                        <van-radio name="blue">蓝底</van-radio>
+                        <van-radio name="white">白底</van-radio>
+                    </van-radio-group>
+                </view>
+                <view class="clear"></view>
+            </view>  
+    </view>
+    <view class="main footer">
+        <view class="operate">
+            <view class="" bindtap="chooseImage" data-source-type="album">
+            <van-button  type="primary"  color="#0081ff">
+            
+            相册选择</van-button></view>
+            <view class="startTake" bindtap="chooseImage" data-source-type="camera"><van-button  type="primary">
+            
+            开始拍摄</van-button></view>
+        </view>
+    </view>
+</view>

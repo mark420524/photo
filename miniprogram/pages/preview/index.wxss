@@ -1,0 +1,31 @@
+.main {
+	height: 100vh;
+	display: flex;
+	flex-flow: column;
+	font-size: 28rpx;
+}
+.operateBack{
+    width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around ;
+	margin-top: 50rpx;
+}
+.color{
+	width: 8vw;
+	height: 8vw;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.more{
+	margin-top: 10rpx;
+}
+.operateInfo{
+	position: fixed;
+    width: 90%;
+    background-color: #ffffff;
+    bottom: 0;
+	padding: 30rpx;
+	
+}

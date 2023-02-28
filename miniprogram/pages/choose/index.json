@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "选择图片",
+    "usingComponents": {
+        "van-image": "../../components/vant/image/index",
+        "van-button": "../../components/vant/button/index",
+        "van-radio-group":"../../components/vant/radio-group/index",
+        "van-radio":"../../components/vant/radio/index"
+    }
+}

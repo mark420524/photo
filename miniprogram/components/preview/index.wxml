@@ -1,0 +1,13 @@
+<view class="container">
+    <view class="image-wrap">
+        <view class="height-control" style="{{lineHeight}}" >
+            <label class="_span">{{currentHeight}}</label>
+        </view>
+        <view class="imageWrap" style="background-color: {{background}};{{imageWrapStyle}}" >
+            <image alt="true" bindload="imageOnLoad" class="_image" style="{{imageStyle}}" mode="widthFix" src="{{imageSrc}}" ></image>
+        </view>
+        <view class="width-control" style="{{lineWidth}}" >
+            <label class="_span">{{currentWidth}}</label>
+        </view>
+    </view>
+</view>
