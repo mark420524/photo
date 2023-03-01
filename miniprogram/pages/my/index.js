@@ -5,11 +5,16 @@ Page({
     data:{
         userInfo:{}
     }, 
+    gotoProfile(){
+        wx.navigateTo({
+          url: '/pages/my/profile',
+        })
+    },
         // 去登陆
         toLogin(){
             let _this = this
             wx.getUserProfile({
-                    desc: '获取你的昵称、头像、地区及性别',
+                    desc: '获取你的昵称、头像',
                     success: res => {
                         let userInfo = res.userInfo;
                         _this.setData({
@@ -22,7 +27,7 @@ Page({
                     fail: res => {
                         //拒绝授权
                         wx.showToast({
-                            title: '您拒绝了请求,不能使用答题排名等功能',
+                            title: '您拒绝了请求',
                             icon: 'error',
                             duration: 2000
                         });
@@ -67,6 +72,7 @@ Page({
         },
         onShow(){ 
             let userInfo = wx.getStorageSync('userInfo');
+            console.log(userInfo)
             this.setData({userInfo:userInfo})
             if (typeof this.getTabBar === 'function' &&
                 this.getTabBar()) {

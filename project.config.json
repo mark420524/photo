@@ -56,7 +56,7 @@
         "ignoreUploadUnusedFiles": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.4",
+    "libVersion": "2.30.1",
     "appid": "wx02e68372ad17d5dd",
     "projectname": "photo",
     "debugOptions": {
