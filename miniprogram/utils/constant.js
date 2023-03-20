@@ -1,1 +1,1 @@
-exports.imageUrl = 'http://192.168.247.128:8000/';
+exports.imageUrl = 'http://192.168.247.128:9000/';
